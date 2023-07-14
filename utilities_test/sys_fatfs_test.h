@@ -1,6 +1,6 @@
 #ifndef UTILITIES_TEST_SYS_FATFS_TEST_HPP
 #define UTILITIES_TEST_SYS_FATFS_TEST_HPP
-#include "hitsic_common.h"
+#include "cmodule_common.h"
 #include <inc_stdlib.h>
 
 extern sd_card_t g_sd;

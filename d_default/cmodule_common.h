@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef D_DEFAULT_HITSIC_COMMON_H_
-#define D_DEFAULT_HITSIC_COMMON_H_
+#ifndef D_DEFAULT_CMODULE_COMMON_H_
+#define D_DEFAULT_CMODULE_COMMON_H_
 
 #include "inc_fsl_default.h"
 #include "stdint.h"
@@ -24,58 +24,58 @@
 /**
  * @brief : 软件版本产生方式定义
  */
-#define HITSIC_MAKE_VERSION(major, minor, patch) (((major) << 16) | ((minor) << 8) | (patch))
+#define CMODULE_MAKE_VERSION(major, minor, patch) (((major) << 16) | ((minor) << 8) | (patch))
 
 
 
-#ifndef HITSIC_USE_FTFX_FLASH
-#define HITSIC_USE_FTFX_FLASH (0U)
-#endif // ! HITSIC_USE_FTFX_FLASH
+#ifndef CMODULE_USE_FTFX_FLASH
+#define CMODULE_USE_FTFX_FLASH (0U)
+#endif // ! CMODULE_USE_FTFX_FLASH
 
-#ifndef HITSIC_USE_DISP_SSD1306
-#define HITSIC_USE_DISP_SSD1306 (0U)
-#endif // ! HITSIC_USE_DISP_SSD1306
+#ifndef CMODULE_USE_DISP_SSD1306
+#define CMODULE_USE_DISP_SSD1306 (0U)
+#endif // ! CMODULE_USE_DISP_SSD1306
 
-#ifndef HITSIC_USE_DISP_ST7789
-#define HITSIC_USE_DISP_ST7789 (0U)
-#endif // ! HITSIC_USE_DISP_ST7789
+#ifndef CMODULE_USE_DISP_ST7789
+#define CMODULE_USE_DISP_ST7789 (0U)
+#endif // ! CMODULE_USE_DISP_ST7789
 
-#ifndef HITSIC_USE_DRV_BUTTON
-#define HITSIC_USE_DRV_BUTTON (0U)
-#endif // ! HITSIC_USE_DRV_BUTTON
+#ifndef CMODULE_USE_DRV_BUTTON
+#define CMODULE_USE_DRV_BUTTON (0U)
+#endif // ! CMODULE_USE_DRV_BUTTON
 
-#ifndef HITSIC_USE_DMADVP
-#define HITSIC_USE_DMADVP (0U)
-#endif // ! HITSIC_USE_DMADVP
+#ifndef CMODULE_USE_DMADVP
+#define CMODULE_USE_DMADVP (0U)
+#endif // ! CMODULE_USE_DMADVP
 
-#ifndef HITSIC_USE_CAM_ZF9V034
-#define HITSIC_USE_CAM_ZF9V034 (0U)
-#endif // ! HITSIC_USE_CAM_ZF9V034
-
-
-
-#ifndef HITSIC_USE_PITMGR
-#define HITSIC_USE_PITMGR 		(0U)
-#endif // ! HITSIC_USE_PITMGR
-
-#ifndef HITSIC_USE_EXTINT
-#define HITSIC_USE_EXTINT 		(0U)
-#endif // ! HITSIC_USE_EXTINT
-
-#ifndef HITSIC_USE_UARTMGR
-#define HITSIC_USE_UARTMGR 		(0U)
-#endif // ! HITSIC_USE_UARTMGR
-
-#ifndef HITSIC_USE_RMCALL
-#define HITSIC_USE_RMCALL 		(0U)
-#endif // ! HITSIC_USE_RMCALL
+#ifndef CMODULE_USE_CAM_ZF9V034
+#define CMODULE_USE_CAM_ZF9V034 (0U)
+#endif // ! CMODULE_USE_CAM_ZF9V034
 
 
 
+#ifndef CMODULE_USE_PITMGR
+#define CMODULE_USE_PITMGR 		(0U)
+#endif // ! CMODULE_USE_PITMGR
 
-#ifndef HITSIC_USE_APP_SVBMP
-#define HITSIC_USE_APP_SVBMP (0U)
-#endif // ! HITSIC_USE_APP_SVBMP
+#ifndef CMODULE_USE_EXTINT
+#define CMODULE_USE_EXTINT 		(0U)
+#endif // ! CMODULE_USE_EXTINT
+
+#ifndef CMODULE_USE_UARTMGR
+#define CMODULE_USE_UARTMGR 		(0U)
+#endif // ! CMODULE_USE_UARTMGR
+
+#ifndef CMODULE_USE_RMCALL
+#define CMODULE_USE_RMCALL 		(0U)
+#endif // ! CMODULE_USE_RMCALL
+
+
+
+
+#ifndef CMODULE_USE_APP_SVBMP
+#define CMODULE_USE_APP_SVBMP (0U)
+#endif // ! CMODULE_USE_APP_SVBMP
 
 
 
@@ -121,4 +121,4 @@ status_t HAL_I2C_Mem_WriteBlocking(HAL_I2C_Type *_i2c, uint8_t _addr, uint32_t _
 }
 #endif
 
-#endif // ! D_DEFAULT_HITSIC_COMMON_H_
+#endif // ! D_DEFAULT_CMODULE_COMMON_H_

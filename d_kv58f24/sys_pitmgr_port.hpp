@@ -25,19 +25,19 @@
 #ifndef D_KV58F24_SYS_PITMGR_PORT_HPP_
 #define D_KV58F24_SYS_PITMGR_PORT_HPP_
 
-#include "hitsic_common.h"
+#include "cmodule_common.h"
 
-#ifndef HITSIC_USE_PITMGR
-#define HITSIC_USE_PITMGR 		(0U)
-#endif // ! HITSIC_USE_PITMGR
+#ifndef CMODULE_USE_PITMGR
+#define CMODULE_USE_PITMGR 		(0U)
+#endif // ! CMODULE_USE_PITMGR
 
-#if defined(HITSIC_USE_PITMGR) && (HITSIC_USE_PITMGR > 0)
+#if defined(CMODULE_USE_PITMGR) && (CMODULE_USE_PITMGR > 0)
 
-#define HITSIC_PITMGR_CNTFREQ 60000000
+#define CMODULE_PITMGR_CNTFREQ 60000000
 
-#define HITSIC_PITMGR_INITLIZE		(0U)
+#define CMODULE_PITMGR_INITLIZE		(0U)
 
-#if defined(HITSIC_PITMGR_INITLIZE) && (HITSIC_PITMGR_INITLIZE > 0)
+#if defined(CMODULE_PITMGR_INITLIZE) && (CMODULE_PITMGR_INITLIZE > 0)
 inline void PITMGR_PlatformInit(void)
 {
 	pit_config_t cfg;
@@ -52,10 +52,10 @@ inline void PITMGR_PlatformInit(void)
 	EnableIRQ(PIT2_IRQn);
 	PIT_StartTimer(PIT, kPIT_Chnl_2);
 }
-#endif // ! HITSIC_PITMGR_INITLIZE
+#endif // ! CMODULE_PITMGR_INITLIZE
 
-#define HITSIC_PITMGR_DEFAULT_IRQ 	(1U)
+#define CMODULE_PITMGR_DEFAULT_IRQ 	(1U)
 
-#endif // ! HITSIC_USE_PITMGR
+#endif // ! CMODULE_USE_PITMGR
 
 #endif // ! D_KV58F24_SYS_PITMGR_PORT_HPP_

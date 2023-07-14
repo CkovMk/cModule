@@ -1,9 +1,9 @@
 #ifndef D_DEFAULT_DRV_CAM_ZF9V034_PORT_HPP
 #define D_DEFAULT_DRV_CAM_ZF9V034_PORT_HPP
 
-#include "hitsic_common.h"
+#include "cmodule_common.h"
 
-#if (defined(HITSIC_USE_CAM_ZF9V034) && (HITSIC_USE_CAM_ZF9V034 > 0))
+#if (defined(CMODULE_USE_CAM_ZF9V034) && (CMODULE_USE_CAM_ZF9V034 > 0))
 #include "drv_cam_zf9v034_port.hpp"
 
 #define ZF9V034_UART_INST (UART3)
@@ -13,7 +13,7 @@
  * 
  * @param data 数据指针
  * @param length 数据长度
- * @return status_t 返回状态，成功时返回kStatus_Success。
+ * @return status_t 返回状态，成功时返回mStatus_Success。
  */
 inline status_t CAM_ZF9V034_UartRxBlocking(uint8_t *data, uint32_t length)
 {
@@ -25,7 +25,7 @@ inline status_t CAM_ZF9V034_UartRxBlocking(uint8_t *data, uint32_t length)
  * 
  * @param data 数据指针
  * @param length 数据长度
- * @return status_t 返回状态，成功时返回kStatus_Success。
+ * @return status_t 返回状态，成功时返回mStatus_Success。
  */
 inline status_t CAM_ZF9V034_UartTxBlocking(const uint8_t *data, uint32_t length)
 {
@@ -53,6 +53,6 @@ inline void CAM_ZF9V034_Delay_ms(uint32_t ms)
 #define ZF9V034_USE_RTCSI (0U)
 #endif // ! ZF9V034_USE_RTCSI
 
-#endif // ! HITSIC_USE_CAM_ZF9V034
+#endif // ! CMODULE_USE_CAM_ZF9V034
 
 #endif // ! D_DEFAULT_DRV_CAM_ZF9V034_PORT_HPP

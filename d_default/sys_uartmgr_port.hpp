@@ -8,9 +8,9 @@
 #ifndef D_DEFAULT_SYS_UARTMGR_PORT_HPP_
 #define D_DEFAULT_SYS_UARTMGR_PORT_HPP_
 
-#include "hitsic_common.h"
+#include "cmodule_common.h"
 
-#if defined(HITSIC_USE_UARTMGR) && (HITSIC_USE_UARTMGR > 0)
+#if defined(CMODULE_USE_UARTMGR) && (CMODULE_USE_UARTMGR > 0)
 
 
 
@@ -26,6 +26,6 @@
 	case UART0_BASE: return uart0; break;
 	//case UART1_BASE: return uart1; break;
 
-#endif // ! HITSIC_USE_UARTMGR
+#endif // ! CMODULE_USE_UARTMGR
 
 #endif // ! D_DEFAULT_SYS_UARTMGR_PORT_HPP_

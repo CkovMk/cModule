@@ -19,45 +19,45 @@
 #define D_RT1052_DRV_IMU_PORT_H_
 
 #include "inc_stdlib.h"
-#include "hitsic_common.h"
+#include "cmodule_common.h"
 
-#define HITSIC_USE_DRV_IMU_INV (0U)
-
-
+#define CMODULE_USE_DRV_IMU_INV (0U)
 
 
 
-#if defined(HITSIC_USE_DRV_IMU_INV) && (HITSIC_USE_DRV_IMU_INV > 0)
+
+
+#if defined(CMODULE_USE_DRV_IMU_INV) && (CMODULE_USE_DRV_IMU_INV > 0)
 
 #ifdef __cplusplus
 extern "C"{
 #endif
 
-#define HITSIC_IMU_SPI (0U)
+#define CMODULE_IMU_SPI (0U)
 
-#define HITSIC_IMU_SPI_INST (SPI1)
-#define HITSIC_IMU_SPI_PCSn (0)
-#define HITSIC_IMU_SPI_CTARn (0)
+#define CMODULE_IMU_SPI_INST (SPI1)
+#define CMODULE_IMU_SPI_PCSn (0)
+#define CMODULE_IMU_SPI_CTARn (0)
 
-#define HITSIC_IMU_I2C (1U)
+#define CMODULE_IMU_I2C (1U)
 
-#define HITSIC_IMU_I2C_INST (LPI2C1)
+#define CMODULE_IMU_I2C_INST (LPI2C1)
 
 
     
-#if defined(HITSIC_IMU_SPI) && (HITSIC_IMU_SPI > 0)
+#if defined(CMODULE_IMU_SPI) && (CMODULE_IMU_SPI > 0)
     status_t DRVIMU_icm_example_spi_xfer(uint8_t* txbuf, uint8_t* rxbuf, uint32_t len);
-#elif defined (HITSIC_IMU_I2C) && (HITSIC_IMU_I2C > 0)
+#elif defined (CMODULE_IMU_I2C) && (CMODULE_IMU_I2C > 0)
     status_t DRVIMU_icm_example_i2c_rx(uint8_t slave_addr, uint8_t reg, uint8_t* buf, uint32_t len);
 	status_t DRVIMU_icm_example_i2c_tx(uint8_t slave_addr, uint8_t reg, uint8_t* buf, uint32_t len);
 	
-#endif // ! HITSIC_IMU_SPI & HITSIC_IMU_I2C
+#endif // ! CMODULE_IMU_SPI & CMODULE_IMU_I2C
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif // HITSIC_USE_DRV_IMU_INV
+#endif // CMODULE_USE_DRV_IMU_INV
 
 
 #endif // ! D_MK66F18_DRV_IMU_PORT_H_

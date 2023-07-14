@@ -4,7 +4,7 @@
  * @LastEditTime: 2021-10-22 22:16:08
  * @LastEditors: your name
  * @Description: In User Settings Edit
- * @FilePath: \ECG_MK24F12\HITSIC_Module\d_mk24f12\extlib_port\CmBacktrace-1.4.0\cm_backtrace\cmb_cfg.h
+ * @FilePath: \ECG_MK24F12\CMODULE_Module\d_mk24f12\extlib_port\CmBacktrace-1.4.0\cm_backtrace\cmb_cfg.h
  */
 /*
  * This file is part of the CmBacktrace Library.

@@ -8,13 +8,13 @@
 #include "sys_pitmgr.hpp"
 
 
-#if defined(HITSIC_USE_PITMGR) && (HITSIC_USE_PITMGR > 0)
+#if defined(CMODULE_USE_PITMGR) && (CMODULE_USE_PITMGR > 0)
 
 #ifdef __cplusplus
 extern "C"{
 #endif
 
-#if defined(HITSIC_PITMGR_DEFAULT_IRQ) && (HITSIC_PITMGR_DEFAULT_IRQ > 0)
+#if defined(CMODULE_PITMGR_DEFAULT_IRQ) && (CMODULE_PITMGR_DEFAULT_IRQ > 0)
 void Default_IRQHandler(void)
 {
 	LPTMR_ClearStatusFlags(LPTMR0, kLPTMR_TimerCompareFlag);
@@ -29,4 +29,4 @@ void Default_IRQHandler(void)
 
 
 
-#endif // ! HITSIC_USE_PITMGR
+#endif // ! CMODULE_USE_PITMGR

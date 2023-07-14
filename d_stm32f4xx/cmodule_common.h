@@ -14,8 +14,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#ifndef D_STM32F4XX_HITSIC_COMMON_H
-#define D_STM32F4XX_HITSIC_COMMON_H
+#ifndef D_STM32F4XX_CMODULE_COMMON_H
+#define D_STM32F4XX_CMODULE_COMMON_H
 
 #include "inc_hal_stm32f4xx.h"
 #include "assert.h"
@@ -24,65 +24,65 @@
 /**
  * @brief : 软件版本产生方式定义
  */
-#define HITSIC_MAKE_VERSION(major, minor, patch) (((major) << 16) | ((minor) << 8) | (patch))
-#define HITSIC_VERSION_MAJOR(x) (x >> 16U)
-#define HITSIC_VERSION_MINOR(x) ((x >> 8U) & 0xffU)
-#define HITSIC_VERSION_PATCH(x) (x & 0xffU)
+#define CMODULE_MAKE_VERSION(major, minor, patch) (((major) << 16) | ((minor) << 8) | (patch))
+#define CMODULE_VERSION_MAJOR(x) (x >> 16U)
+#define CMODULE_VERSION_MINOR(x) ((x >> 8U) & 0xffU)
+#define CMODULE_VERSION_PATCH(x) (x & 0xffU)
 
 
 /** DRI */
 
-// #ifndef HITSIC_USE_FTFX_FLASH
-// #define HITSIC_USE_FTFX_FLASH (0U)
-// #endif // ! HITSIC_USE_FTFX_FLASH
+// #ifndef CMODULE_USE_FTFX_FLASH
+// #define CMODULE_USE_FTFX_FLASH (0U)
+// #endif // ! CMODULE_USE_FTFX_FLASH
 
-// #ifndef HITSIC_USE_DISP_SSD1306
-// #define HITSIC_USE_DISP_SSD1306 (0U)
-// #endif // ! HITSIC_USE_DISP_SSD1306
+// #ifndef CMODULE_USE_DISP_SSD1306
+// #define CMODULE_USE_DISP_SSD1306 (0U)
+// #endif // ! CMODULE_USE_DISP_SSD1306
 
-// #ifndef HITSIC_USE_DISP_SSD1327
-// #define HITSIC_USE_DISP_SSD1327 (0U)
-// #endif // ! HITSIC_USE_DISP_SSD1327
+// #ifndef CMODULE_USE_DISP_SSD1327
+// #define CMODULE_USE_DISP_SSD1327 (0U)
+// #endif // ! CMODULE_USE_DISP_SSD1327
 
-// #ifndef HITSIC_USE_DISP_ST7789
-// #define HITSIC_USE_DISP_ST7789 (0U)
-// #endif // ! HITSIC_USE_DISP_ST7789
+// #ifndef CMODULE_USE_DISP_ST7789
+// #define CMODULE_USE_DISP_ST7789 (0U)
+// #endif // ! CMODULE_USE_DISP_ST7789
 
-// #ifndef HITSIC_USE_DRV_BUTTON
-// #define HITSIC_USE_DRV_BUTTON (0U)
-// #endif // ! HITSIC_USE_DRV_BUTTON
+// #ifndef CMODULE_USE_DRV_BUTTON
+// #define CMODULE_USE_DRV_BUTTON (0U)
+// #endif // ! CMODULE_USE_DRV_BUTTON
 
-// #ifndef HITSIC_USE_DMADVP
-// #define HITSIC_USE_DMADVP (0U)
-// #endif // ! HITSIC_USE_DMADVP
+// #ifndef CMODULE_USE_DMADVP
+// #define CMODULE_USE_DMADVP (0U)
+// #endif // ! CMODULE_USE_DMADVP
 
-// #ifndef HITSIC_USE_CAM_ZF9V034
-// #define HITSIC_USE_CAM_ZF9V034 (0U)
-// #endif // ! HITSIC_USE_CAM_ZF9V034
+// #ifndef CMODULE_USE_CAM_ZF9V034
+// #define CMODULE_USE_CAM_ZF9V034 (0U)
+// #endif // ! CMODULE_USE_CAM_ZF9V034
 
 /** SYS */
 
-// #ifndef HITSIC_USE_LTC
-// #define HITSIC_USE_LTC       (0U)
-// #endif // ! HITSIC_USE_LTC
+// #ifndef CMODULE_USE_LTC
+// #define CMODULE_USE_LTC       (0U)
+// #endif // ! CMODULE_USE_LTC
 
-#ifndef HITSIC_USE_PITMGR
-#define HITSIC_USE_PITMGR 		(1U)
-#endif // ! HITSIC_USE_PITMGR
+#ifndef CMODULE_USE_PITMGR
+#define CMODULE_USE_PITMGR 		(1U)
+#endif // ! CMODULE_USE_PITMGR
 
-// #ifndef HITSIC_USE_EXTINT
-// #define HITSIC_USE_EXTINT 		(0U)
-// #endif // ! HITSIC_USE_EXTINT
+// #ifndef CMODULE_USE_EXTINT
+// #define CMODULE_USE_EXTINT 		(0U)
+// #endif // ! CMODULE_USE_EXTINT
 
-#ifndef HITSIC_USE_RMCALL
-#define HITSIC_USE_RMCALL 		(1U)
-#endif // ! HITSIC_USE_RMCALL
+#ifndef CMODULE_USE_RMCALL
+#define CMODULE_USE_RMCALL 		(1U)
+#endif // ! CMODULE_USE_RMCALL
 
 /** APP */
 
-// #ifndef HITSIC_USE_APP_SVBMP
-// #define HITSIC_USE_APP_SVBMP (1U)
-// #endif // ! HITSIC_USE_APP_SVBMP
+// #ifndef CMODULE_USE_APP_SVBMP
+// #define CMODULE_USE_APP_SVBMP (1U)
+// #endif // ! CMODULE_USE_APP_SVBMP
 
 
 
@@ -214,13 +214,13 @@ enum _status_groups
  */
 enum
 {
-    kStatus_Success = MAKE_STATUS(kStatusGroup_Generic, 0),  /*!< Generic status for Success. */
-    kStatus_Fail = MAKE_STATUS(kStatusGroup_Generic, 1),      /*!< Generic status for Fail. */
-    kStatus_ReadOnly = MAKE_STATUS(kStatusGroup_Generic, 2),    /*!< Generic status for read only failure. */
-    kStatus_OutOfRange = MAKE_STATUS(kStatusGroup_Generic, 3),   /*!< Generic status for out of range access. */
-    kStatus_InvalidArgument = MAKE_STATUS(kStatusGroup_Generic, 4),   /*!< Generic status for invalid argument check. */
-    kStatus_Timeout = MAKE_STATUS(kStatusGroup_Generic, 5),   /*!< Generic status for timeout. */
-    kStatus_NoTransferInProgress = MAKE_STATUS(kStatusGroup_Generic, 6),   /*!< Generic status for no transfer in progress. */
+    mStatus_Success = MAKE_STATUS(kStatusGroup_Generic, 0),  /*!< Generic status for Success. */
+    mStatus_Fail = MAKE_STATUS(kStatusGroup_Generic, 1),      /*!< Generic status for Fail. */
+    mStatus_ReadOnly = MAKE_STATUS(kStatusGroup_Generic, 2),    /*!< Generic status for read only failure. */
+    mStatus_OutOfRange = MAKE_STATUS(kStatusGroup_Generic, 3),   /*!< Generic status for out of range access. */
+    mStatus_InvalidArgument = MAKE_STATUS(kStatusGroup_Generic, 4),   /*!< Generic status for invalid argument check. */
+    mStatus_Timeout = MAKE_STATUS(kStatusGroup_Generic, 5),   /*!< Generic status for timeout. */
+    mStatus_NoTransferInProgress = MAKE_STATUS(kStatusGroup_Generic, 6),   /*!< Generic status for no transfer in progress. */
 };
 
 /*! @brief Type used for all status and error return values. */
@@ -272,4 +272,4 @@ static inline void HAL_ExitCritical(void)
 }
 #endif
 
-#endif // ! D_STM32F4XX_HITSIC_COMMON_H
+#endif // ! D_STM32F4XX_CMODULE_COMMON_H

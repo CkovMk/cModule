@@ -25,7 +25,7 @@
 
 #include <drv_ftfx_flash.h>
 
-#if defined(HITSIC_USE_FTFX_FLASH) && (HITSIC_USE_FTFX_FLASH > 0)
+#if defined(CMODULE_USE_FTFX_FLASH) && (CMODULE_USE_FTFX_FLASH > 0)
 
 #define SYSLOG_TAG  ("FTFX_FLASH")
 #define SYSLOG_LVL  (3U)
@@ -48,8 +48,8 @@ extern "C" {
 
 	status_t FLASH_SimpleInit(void)
 	{
-	    SYSLOG_I("Init Begin. v%d.%d.%d",HITSIC_VERSION_MAJOR(DRV_FTFX_FLASH_VERSION),
-	            HITSIC_VERSION_MINOR(DRV_FTFX_FLASH_VERSION), HITSIC_VERSION_PATCH(DRV_FTFX_FLASH_VERSION));
+	    SYSLOG_I("Init Begin. v%d.%d.%d",CMODULE_VERSION_MAJOR(DRV_FTFX_FLASH_VERSION),
+	            CMODULE_VERSION_MINOR(DRV_FTFX_FLASH_VERSION), CMODULE_VERSION_PATCH(DRV_FTFX_FLASH_VERSION));
 		/* Return code from each flash driver function */
 		status_t result;
 		flash_securityStatus = kFTFx_SecurityStateNotSecure;
@@ -121,7 +121,7 @@ extern "C" {
 		}
 		if ((_addr + _byteCnt - 1) / flash_sectorSize != _addr / flash_sectorSize)
 		{
-			return kStatus_FTFx_SizeError;
+			return mStatus_FTFx_SizeError;
 		}
 
 		/* Post-preparation work about flash Cache/Prefetch/Speculation. */
@@ -140,7 +140,7 @@ extern "C" {
 		{
 			((uint8_t*)_buf)[i] = *(volatile uint8_t*)(destAdrss + i);
 		}
-		return kStatus_FTFx_Success;
+		return mStatus_FTFx_Success;
 
 	}
 
@@ -161,7 +161,7 @@ extern "C" {
 		}
 		if ((_addr + _byteCnt - 1) / flash_sectorSize != _addr / flash_sectorSize)
 		{
-			return kStatus_FTFx_SizeError;
+			return mStatus_FTFx_SizeError;
 		}
 
 		/* Pre-preparation work about flash Cache/Prefetch/Speculation. */
@@ -276,7 +276,7 @@ extern "C" {
 			ErrorCheck(result, FLASH_SectorWrite(buff, i));
 		}
 		free(buff);
-		return kStatus_FTFx_Success;
+		return mStatus_FTFx_Success;
 	}
 
 
@@ -324,7 +324,7 @@ extern "C" {
 			memcpy(dst_start, buff + buff_start, dst_size);
 		}
 		free(buff);
-		return kStatus_FTFx_Success;
+		return mStatus_FTFx_Success;
 	}
 	*/
 
@@ -336,4 +336,4 @@ extern "C" {
 }
 #endif
 
-#endif // ! HITSIC_USE_FTFX_FLASH
+#endif // ! CMODULE_USE_FTFX_FLASH

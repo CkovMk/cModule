@@ -1,9 +1,9 @@
 #ifndef D_DEFAULT_SVBMP_PORT_HPP
 #define D_DEFAULT_SVBMP_PORT_HPP
 #include <inc_stdlib.h>
-#include "hitsic_common.h"
+#include "cmodule_common.h"
 
-#if (defined(HITSIC_USE_APP_SVBMP) && (HITSIC_USE_APP_SVBMP > 0))
+#if (defined(CMODULE_USE_APP_SVBMP) && (CMODULE_USE_APP_SVBMP > 0))
 #include "ff.h"
 
 //#ifdef ON_WINDOWS
@@ -27,6 +27,6 @@ inline int SVBMP_FileWrite(svbmp_file_t* fp, const void* buff, uint32_t btw)
     return 0;
 }
 
-#endif // ! HITSIC_USE_APP_SVBMP
+#endif // ! CMODULE_USE_APP_SVBMP
 
 #endif // ! D_DEFAULT_SVBMP_PORT_HPP

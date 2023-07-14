@@ -29,9 +29,9 @@
 #ifndef UTILITIES_DRV_BUTTON_HPP
 #define UTILITIES_DRV_BUTTON_HPP
 #include <inc_stdlib.h>
-#include "hitsic_common.h"
+#include "cmodule_common.h"
 
-#if defined(HITSIC_USE_DRV_BUTTON) && (HITSIC_USE_DRV_BUTTON > 0)
+#if defined(CMODULE_USE_DRV_BUTTON) && (CMODULE_USE_DRV_BUTTON > 0)
 #include <sys_extint.h>
 #include <sys_pitmgr.h>
 #include "drv_button_port.h"
@@ -46,7 +46,7 @@ extern "C"{
 #endif
 
 /** @brief : 软件版本 */
-#define DRV_BUTTON_VERSION (HITSIC_MAKE_VERSION(0u, 3u, 0u))
+#define DRV_BUTTON_VERSION (CMODULE_MAKE_VERSION(0u, 3u, 0u))
 
 typedef enum 
 {
@@ -105,6 +105,6 @@ void BUTTON_PitIsr(button_t *_inst);
 
 /* @} */
 
-#endif // ! HITSIC_USE_DRV_BUTTON
+#endif // ! CMODULE_USE_DRV_BUTTON
 
 #endif // ! UTILITIES_DRV_BUTTON_HPP

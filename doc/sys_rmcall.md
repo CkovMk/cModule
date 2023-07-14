@@ -362,11 +362,11 @@ rmcall_handle_t RMIS_h_status =
 
 ### RMCALL配置
 
-启用`hitsic_common.h`中的宏定义`HITSIC_USE_RMCALL`，使能RMCALL模块。
+启用`cmodule_common.h`中的宏定义`CMODULE_USE_RMCALL`，使能RMCALL模块。
 
 编辑`sys_rmcall_port.h`：宏定义“RMCALL_SYS_LVL”控制调试串口输出的日志数量，共分“详细”、“调试”、“信息”、“警告”、“错误”、“断言”六级，严重程度依次递增。`#define RMCALL_SYS_LVL (3U)`将启用 “信息”及以上级别的日志输出，适合日常使用。
 
-定义通信使用的魔数：`#define HITSIC_RMCALL_HEADER_MAGIC (0x554768A0U)`。通信双方的魔数应保持一致，可按需设置。
+定义通信使用的魔数：`#define CMODULE_RMCALL_HEADER_MAGIC (0x554768A0U)`。通信双方的魔数应保持一致，可按需设置。
 
 定义状态组`#define kStatusGroup_RMCALL (201U)`，这将给予RMCALL模块全局唯一的错误状态编码。
 

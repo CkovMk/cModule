@@ -1,10 +1,10 @@
 #ifndef UTILITIES_TEST_DRV_CAM_ZF9V034_TEST_HPP
 #define UTILITIES_TEST_DRV_CAM_ZF9V034_TEST_HPP
-#include "hitsic_common.h"
+#include "cmodule_common.h"
 #include "drv_cam_zf9v034.h"
 
 
-#if (defined(HITSIC_USE_DMADVP) && (HITSIC_USE_DMADVP > 0))
+#if (defined(CMODULE_USE_DMADVP) && (CMODULE_USE_DMADVP > 0))
 #include "drv_dmadvp.h"
 
 extern pitmgr_t pitmgr_main;
@@ -19,7 +19,7 @@ inline void CAM_ZF9V034_UnitTestDmaCallback(edma_handle_t *handle, void *userDat
 
     result = DMADVP_TransferStart(dmadvpHandle->base, dmadvpHandle);
     //PRINTF("new full buffer: 0x%-8.8x = 0x%-8.8x\n", handle->fullBuffer.front(), handle->xferCfg.destAddr);
-    if(kStatus_Success != result)
+    if(mStatus_Success != result)
     {
         DMADVP_TransferStop(dmadvpHandle->base, dmadvpHandle);
         PRINTF("[E]DMADVP.TEST: transfer stop! insufficent buffer\n");
@@ -60,7 +60,7 @@ inline void CAM_ZF9V034_UnitTest(void)
     PRINTF("[D]DMADVP.TEST: Begin time: %d ms.\n", CAM_ZF9V034_TEST_TIMER_MS);
     for(int time = 0; time < 512; ++time){
     PRINTF("[D]DMADVP.TEST: Transfer %4.4d.\n", time);
-    while(kStatus_Success != DMADVP_TransferGetFullBuffer(DMADVP0, &dmadvpHandle, &fullBuffer));
+    while(mStatus_Success != DMADVP_TransferGetFullBuffer(DMADVP0, &dmadvpHandle, &fullBuffer));
 
     //memset((void*)dispBuffer, 0x00, 8 * 128);
     DISP_SSD1306_FB_Clear(testDispBuffer);
@@ -93,6 +93,6 @@ inline void CAM_ZF9V034_UnitTest(void)
     PRINTF("---------- ZF9V034 Test Done ----------\n\n");
 }
 
-#endif // ! HITSIC_USE_DMADVP
+#endif // ! CMODULE_USE_DMADVP
 
 #endif // ! UTILITIES_TEST_DRV_CAM_ZF9V034_TEST_HPP
