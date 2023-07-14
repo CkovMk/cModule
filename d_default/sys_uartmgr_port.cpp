@@ -8,7 +8,7 @@
 #include "sys_uartmgr.hpp"
 
 
-#if defined(HITSIC_USE_UARTMGR) && (HITSIC_USE_UARTMGR > 0)
+#if defined(CMODULE_USE_UARTMGR) && (CMODULE_USE_UARTMGR > 0)
 
 
-#endif // ! HITSIC_USE_UARTMGR
+#endif // ! CMODULE_USE_UARTMGR

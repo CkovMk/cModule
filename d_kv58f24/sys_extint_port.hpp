@@ -18,13 +18,13 @@
 #ifndef D_KV58F24_SYS_EXTINT_PORT_HPP_
 #define D_KV58F24_SYS_EXTINT_PORT_HPP_
 
-#include "hitsic_common.h"
+#include "cmodule_common.h"
 
 //config marco
 
-#ifndef HITSIC_USE_EXTMGR
-#define HITSIC_USE_EXTMGR 		(0U)
-#endif // ! HITSIC_USE_EXTMGR
+#ifndef CMODULE_USE_EXTMGR
+#define CMODULE_USE_EXTMGR 		(0U)
+#endif // ! CMODULE_USE_EXTMGR
 
 //HAL marco
 #define INTC_Type 			PORT_Type
@@ -35,11 +35,11 @@
 
 
 
-#ifndef HITSIC_EXTMGR_INITLIZE
-#define HITSIC_EXTMGR_INITLIZE 		(0U)
-#endif // ! HITSIC_EXTMGR_INITLIZE
+#ifndef CMODULE_EXTMGR_INITLIZE
+#define CMODULE_EXTMGR_INITLIZE 		(0U)
+#endif // ! CMODULE_EXTMGR_INITLIZE
 
-#if defined(HITSIC_EXTMGR_INITLIZE) && (HITSIC_EXTMGR_INITLIZE > 0)
+#if defined(CMODULE_EXTMGR_INITLIZE) && (CMODULE_EXTMGR_INITLIZE > 0)
 inline void EXTINT_PlatformInit(void)
 {
 	NVIC_SetPriority(PORTA_IRQn, 6);
@@ -53,7 +53,7 @@ inline void EXTINT_PlatformInit(void)
 	EnableIRQ(PORTD_IRQn);
 	EnableIRQ(PORTE_IRQn);
 }
-#endif // ! HITSIC_EXTMGR_INITLIZE
+#endif // ! CMODULE_EXTMGR_INITLIZE
 
 
 #define HTISIC_EXTINT_DEFAULT_IRQ 	(1U)

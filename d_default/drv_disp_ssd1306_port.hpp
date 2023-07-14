@@ -26,12 +26,12 @@
 #ifndef D_DEFAULT_DRVOLED_H_
 #define D_DEFAULT_DRVOLED_H_
 #include <inc_stdlib.h>
-#include "hitsic_common.h"
+#include "cmodule_common.h"
 #include "sys_pitmgr.hpp"
 #include "pin_mux.h"
 
-#define HITSIC_DISP_SSD1306_FLIP_X (0U)	///< ��Ļ���ҷ�ת
-#define HITSIC_DISP_SSD1306_FLIP_Y (0U)	///< ��Ļ���·�ת
+#define CMODULE_DISP_SSD1306_FLIP_X (0U)	///< ��Ļ���ҷ�ת
+#define CMODULE_DISP_SSD1306_FLIP_Y (0U)	///< ��Ļ���·�ת
 
 
 /**

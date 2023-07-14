@@ -1,6 +1,6 @@
 #include "sys_rmcall_port.h"
 
-#if defined(HITSIC_USE_RMCALL) && (HITSIC_USE_RMCALL > 0)
+#if defined(CMODULE_USE_RMCALL) && (CMODULE_USE_RMCALL > 0)
 
 #include <sys_rmcall.h>
 
@@ -37,4 +37,4 @@ void RMCALL_HOST_RxCpltCallback(UART_HandleTypeDef *huart)
     RMCALL_RxIsr(&rmcall_host);
 }
 
-#endif // HITSIC_USE_RMCALL
+#endif // CMODULE_USE_RMCALL

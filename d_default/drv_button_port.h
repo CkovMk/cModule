@@ -1,10 +1,10 @@
 #ifndef D_DEFAULT_DRV_BUTTON_PORT_H
 #define D_DEFAULT_DRV_BUTTON_PORT_H
-#include "hitsic_common.h"
+#include "cmodule_common.h"
 #include "sys_extint.hpp"
 #include "sys_pitmgr.hpp"
 
-#if defined(HITSIC_USE_DRV_BUTTON) && (HITSIC_USE_DRV_BUTTON > 0)
+#if defined(CMODULE_USE_DRV_BUTTON) && (CMODULE_USE_DRV_BUTTON > 0)
 
 #define BUTTON_TIME_SHRT 50u     //short press
 #define BUTTON_SHRT_TOUT 200u   //short timeout
@@ -22,6 +22,6 @@
 
 #define BUTTON_TIMER_MS     (pitMgr_t::timer_ms)
 
-#endif // ! HITSIC_USE_DRV_BUTTON
+#endif // ! CMODULE_USE_DRV_BUTTON
 
 #endif // ! D_DEFAULT_DRV_BUTTON_PORT_H

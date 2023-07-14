@@ -15,46 +15,41 @@
  * limitations under the License.
  */
 
-#ifndef D_RT1052_HITSIC_COMMON_H_
-#define D_RT1052_HITSIC_COMMON_H_
+#ifndef D_KV58F24_CMODULE_COMMON_H_
+#define D_KV58F24_CMODULE_COMMON_H_
 
-#include "inc_fsl_rt1052.h"
+#include "inc_fsl_mk66f18.h"
 #include "stdint.h"
 
 /**
  * @brief : 软件版本产生方式定义
  */
-#define HITSIC_MAKE_VERSION(major, minor, patch) (((major) << 16) | ((minor) << 8) | (patch))
+#define CMODULE_MAKE_VERSION(major, minor, patch) (((major) << 16) | ((minor) << 8) | (patch))
+
+
+
+#ifndef CMODULE_USE_FTFX_FLASH
+#define CMODULE_USE_FTFX_FLASH (0U)
+#endif // ! CMODULE_USE_FTFX_FLASH
+
+#ifndef CMODULE_USE_DISP_SSD1306
+#define CMODULE_USE_DISP_SSD1306 (0U)
+#endif // ! CMODULE_USE_DISP_SSD1306
 
 
 
 
-#ifndef HITSIC_USE_EXTINT
-#define HITSIC_USE_EXTINT       (1U)
-#endif // ! HITSIC_USE_EXTINT
+#ifndef CMODULE_USE_PITMGR
+#define CMODULE_USE_PITMGR 		(0U)
+#endif // ! CMODULE_USE_PITMGR
 
-#ifndef HITSIC_USE_PITMGR
-#define HITSIC_USE_PITMGR       (1U)
-#endif // ! HITSIC_USE_PITMGR
+#ifndef CMODULE_USE_EXTMGR
+#define CMODULE_USE_EXTMGR 		(0U)
+#endif // ! CMODULE_USE_EXTMGR
 
-#ifndef HITSIC_USE_UARTMGR
-#define HITSIC_USE_UARTMGR      (0U)
-#endif // ! HITSIC_USE_UARTMGR
-
-
-
-
-#ifndef HITSIC_USE_FTFX_FLASH
-#define HITSIC_USE_FTFX_FLASH (0U)
-#endif // ! HITSIC_USE_FTFX_FLASH
-
-#ifndef HITSIC_USE_DISP_SSD1306
-#define HITSIC_USE_DISP_SSD1306 (0U)
-#endif // ! HITSIC_USE_DISP_SSD1306
-
-#ifndef HITSIC_USE_DRV_BUTTON
-#define HITSIC_USE_DRV_BUTTON (0U)
-#endif // ! HITSIC_USE_DRV_BUTTON
+#ifndef CMODULE_USE_UARTMGR
+#define CMODULE_USE_UARTMGR 		(0U)
+#endif // ! CMODULE_USE_UARTMGR
 
 
 
@@ -63,23 +58,22 @@
 
 
 
-typedef LPI2C_Type HAL_I2C_Type;
-typedef LPSPI_Type HAL_SPI_Type;
-typedef LPUART_Type HAL_UART_Type;
+
+typedef I2C_Type HAL_I2C_Type;
+typedef SPI_Type HAL_SPI_Type;
+typedef UART_Type HAL_UART_Type;
 
 #ifdef __cplusplus
 extern "C"{
 #endif
 
 extern uint32_t hal_criticalCnt;
-extern uint32_t hal_regPrimask;
-
 
 inline void HAL_EnterCritical(void)
 {
 	if(0u == hal_criticalCnt++)
 	{
-	    hal_regPrimask = DisableGlobalIRQ();
+		__disable_irq();
 	}
 }
 
@@ -87,7 +81,7 @@ inline void HAL_ExitCritical(void)
 {
 	if(--hal_criticalCnt == 0u)
 	{
-	    EnableGlobalIRQ(hal_regPrimask);
+		__enable_irq();
 	}
 }
 
@@ -103,4 +97,4 @@ status_t HAL_I2C_Mem_WriteBlocking(HAL_I2C_Type *_i2c, uint8_t _addr, uint32_t _
 }
 #endif
 
-#endif // ! D_RT1052_HITSIC_COMMON_H_
+#endif // ! D_KV58F24_CMODULE_COMMON_H_

@@ -18,9 +18,9 @@
 #ifndef D_DEFAULT_SYS_EXTINT_PORT_HPP_
 #define D_DEFAULT_SYS_EXTINT_PORT_HPP_
 
-#include "hitsic_common.h"
+#include "cmodule_common.h"
 
-#if defined(HITSIC_USE_EXTINT) && (HITSIC_USE_EXTINT > 0)
+#if defined(CMODULE_USE_EXTINT) && (CMODULE_USE_EXTINT > 0)
 
 typedef PORT_Type INTC_Type;
 typedef port_interrupt_t extInt_interruptMode_t;
@@ -41,16 +41,16 @@ typedef port_interrupt_t extInt_interruptMode_t;
 
 
 
-#ifndef HITSIC_EXTMGR_INITLIZE
-#define HITSIC_EXTMGR_INITLIZE 		(1U)
-#endif // ! HITSIC_EXTMGR_INITLIZE
+#ifndef CMODULE_EXTMGR_INITLIZE
+#define CMODULE_EXTMGR_INITLIZE 		(1U)
+#endif // ! CMODULE_EXTMGR_INITLIZE
 
-#if defined(HITSIC_EXTMGR_INITLIZE) && (HITSIC_EXTMGR_INITLIZE > 0)
+#if defined(CMODULE_EXTMGR_INITLIZE) && (CMODULE_EXTMGR_INITLIZE > 0)
 inline void EXTINT_PlatformInit(void)
 {
 
 }
-#endif // ! HITSIC_EXTMGR_INITLIZE
+#endif // ! CMODULE_EXTMGR_INITLIZE
 
 
 #define HTISIC_EXTINT_DEFAULT_IRQ 	(1U)
@@ -62,6 +62,6 @@ inline INTC_Type *EXTINT_GetPortInst(GPIO_Type *gpio)
 	return lut[((uint32_t)gpio - GPIOA_BASE) / (GPIOB_BASE - GPIOA_BASE)];
 }
 
-#endif // ! HITSIC_USE_EXTINT
+#endif // ! CMODULE_USE_EXTINT
 
 #endif // ! D_DEFAULT_SYS_EXTINT_PORT_HPP_

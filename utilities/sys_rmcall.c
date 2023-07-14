@@ -270,7 +270,7 @@ mstatus_t RMCALL_CommandSend(rmcall_t *_inst, uint16_t _handleId, void *_data, u
 #endif // RMCALL_TRAILER_CRC32
     
     _inst->statusFlag |= rmcall_statusFlag_txHead;
-    SYSLOG_I("Tx head. ID = 0x%4.4x, size = %4.4d.", _handleId, _dataSize);
+    SYSLOG_D("Tx head. ID = 0x%4.4x, size = %4.4d.", _handleId, _dataSize);
     ret = _inst->teleport->xfer_tx((void *)&_inst->txHeaderBuffer, sizeof(rmcall_header_t));
 
     return ret;
@@ -287,7 +287,7 @@ mstatus_t RMCALL_CommandRecvEnable(rmcall_t *_inst)
         ret = _inst->teleport->xfer_rx((void*)&_inst->rxHeaderBuffer, sizeof(rmcall_header_t));
         if(mStatus_Success == ret)
         {
-            SYSLOG_I("Rx enabled. Rx command begin.");
+            SYSLOG_D("Rx enabled. Rx command begin.");
         }
         else
         {

@@ -31,28 +31,28 @@
 
 ### 添加模组库
 
-1. 向底层中添加模组库。使用`git submodule`将HITSIC_Module添加至工程目录下
+1. 向底层中添加模组库。使用`git submodule`将CMODULE_Module添加至工程目录下
 2. 创建移植文件夹`d_your_device`。
-3. 将HITSIC_Module/utilities文件夹及上述移植文件夹添加至工程，使其中的头文件能被正确包含，源文件能被正确编译。
+3. 将CMODULE_Module/utilities文件夹及上述移植文件夹添加至工程，使其中的头文件能被正确包含，源文件能被正确编译。
 
 ### 必需组件
 
 1. 在移植文件夹内创建`inc_your_device_lib.h`，在这个文件夹内包含所有用到的底层库（如果为了加快编译速度，亦可不使用该文件，而是在移植文件中仅包含必须的底层库头文件）。
 
-2. 仿照现有移植，在移植文件夹内创建`hitsic_common.h`文件，并根据设备名称创建签名：
+2. 仿照现有移植，在移植文件夹内创建`cmodule_common.h`文件，并根据设备名称创建签名：
 
   ```c
-  #ifndef D_YOUR_DEVICE_HITSIC_COMMON_H
-  #define D_YOUR_DEVICE_HITSIC_COMMON_H
+  #ifndef D_YOUR_DEVICE_CMODULE_COMMON_H
+  #define D_YOUR_DEVICE_CMODULE_COMMON_H
   
   #include "inc_your_device_lib.h"
   
   //Other Code ...
   
-  #endif // ! D_YOUR_DEVICE_HITSIC_COMMON_H
+  #endif // ! D_YOUR_DEVICE_CMODULE_COMMON_H
   ```
 
-3. 在`hitsic_common.h`中添加该平台支持的模组的启用宏。**注意：不要添加该平台无法支持的模组！**
+3. 在`cmodule_common.h`中添加该平台支持的模组的启用宏。**注意：不要添加该平台无法支持的模组！**
 
 4. 如果该平台是**非NXP平台**，还需在此处添加模组库所需的状态定义：
 
@@ -80,13 +80,13 @@
     */
    enum
    {
-       kStatus_Success = MAKE_STATUS(kStatusGroup_Generic, 0),  /*!< Generic status for Success. */
-       kStatus_Fail = MAKE_STATUS(kStatusGroup_Generic, 1),      /*!< Generic status for Fail. */
-       kStatus_ReadOnly = MAKE_STATUS(kStatusGroup_Generic, 2),    /*!< Generic status for read only failure. */
-       kStatus_OutOfRange = MAKE_STATUS(kStatusGroup_Generic, 3),   /*!< Generic status for out of range access. */
-       kStatus_InvalidArgument = MAKE_STATUS(kStatusGroup_Generic, 4),   /*!< Generic status for invalid argument check. */
-       kStatus_Timeout = MAKE_STATUS(kStatusGroup_Generic, 5),   /*!< Generic status for timeout. */
-       kStatus_NoTransferInProgress = MAKE_STATUS(kStatusGroup_Generic, 6),   /*!< Generic status for no transfer in progress. */
+       mStatus_Success = MAKE_STATUS(kStatusGroup_Generic, 0),  /*!< Generic status for Success. */
+       mStatus_Fail = MAKE_STATUS(kStatusGroup_Generic, 1),      /*!< Generic status for Fail. */
+       mStatus_ReadOnly = MAKE_STATUS(kStatusGroup_Generic, 2),    /*!< Generic status for read only failure. */
+       mStatus_OutOfRange = MAKE_STATUS(kStatusGroup_Generic, 3),   /*!< Generic status for out of range access. */
+       mStatus_InvalidArgument = MAKE_STATUS(kStatusGroup_Generic, 4),   /*!< Generic status for invalid argument check. */
+       mStatus_Timeout = MAKE_STATUS(kStatusGroup_Generic, 5),   /*!< Generic status for timeout. */
+       mStatus_NoTransferInProgress = MAKE_STATUS(kStatusGroup_Generic, 6),   /*!< Generic status for no transfer in progress. */
    };
    
    
@@ -94,7 +94,7 @@
    typedef int32_t status_t;
    ```
 
-   其中kStatus_Group部分可以按需编写。
+   其中mStatus_Group部分可以按需编写。
 
 5. 下面的内容可按需编写。亦可按需添加`hitsic_common.c`。
 

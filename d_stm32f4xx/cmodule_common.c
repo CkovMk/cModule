@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-#include "hitsic_common.h"
+#include "cmodule_common.h"
 
 #ifdef __cplusplus
 extern "C"{

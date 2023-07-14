@@ -31,12 +31,12 @@
 #ifndef UTILITIES_DRV_FTFX_FLASH_HPP
 #define UTILITIES_DRV_FTFX_FLASH_HPP
 #include <inc_stdlib.h>
-#include "hitsic_common.h"
+#include "cmodule_common.h"
 
-#if defined(HITSIC_USE_FTFX_FLASH) && (HITSIC_USE_FTFX_FLASH > 0)
+#if defined(CMODULE_USE_FTFX_FLASH) && (CMODULE_USE_FTFX_FLASH > 0)
 
 /** @brief : 软件版本 */
-#define DRV_FTFX_FLASH_VERSION (HITSIC_MAKE_VERSION(0U, 2U, 0U))
+#define DRV_FTFX_FLASH_VERSION (CMODULE_MAKE_VERSION(0U, 2U, 0U))
 
 #if defined(FSL_FEATURE_HAS_L1CACHE) && FSL_FEATURE_HAS_L1CACHE
 #include "fsl_cache.h"
@@ -208,6 +208,6 @@ extern "C" {
 }
 #endif
 
-#endif // ! HITSIC_USE_FTFX_FLASH
+#endif // ! CMODULE_USE_FTFX_FLASH
 
 #endif // ! UTILITIES_DRV_FTFX_FLASH_HPP

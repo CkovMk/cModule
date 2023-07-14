@@ -1,6 +1,6 @@
 #include <sys_extint.h>
 
-#if defined(HITSIC_USE_EXTINT) && (HITSIC_USE_EXTINT > 0)
+#if defined(CMODULE_USE_EXTINT) && (CMODULE_USE_EXTINT > 0)
 
 /*!
  * @addtogroup extint
@@ -57,7 +57,7 @@ status_t EXTINT_HandleInsert(extint_t *_inst, extint_handle_t *_handle)
     extint_isrList_push_back(_inst->isrList, _handle);
     HAL_ExitCritical();
 
-    return kStatus_Success;
+    return mStatus_Success;
 }
 
 
@@ -71,11 +71,11 @@ status_t EXTINT_HandleRemove(extint_t *_inst, extint_handle_t *_handle)
         {
             extint_isrList_remove(_inst->isrList, it);
             HAL_ExitCritical();
-            return kStatus_Success;
+            return mStatus_Success;
         }
     }
     HAL_ExitCritical();
-    return kStatus_Fail;
+    return mStatus_Fail;
 }
 
 #ifdef __cplusplus
@@ -84,4 +84,4 @@ status_t EXTINT_HandleRemove(extint_t *_inst, extint_handle_t *_handle)
 
 /* @} */
 
-#endif // ! HITSIC_USE_EXTINT
+#endif // ! CMODULE_USE_EXTINT

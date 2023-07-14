@@ -1,9 +1,9 @@
 #ifndef D_DEFAULT_DRV_DMADVP_PORT_HPP
 #define D_DEFAULT_DRV_DMADVP_PORT_HPP
 
-#include "hitsic_common.h"
+#include "cmodule_common.h"
 
-#if defined(HITSIC_USE_DMADVP) && (HITSIC_USE_DMADVP > 0)
+#if defined(CMODULE_USE_DMADVP) && (CMODULE_USE_DMADVP > 0)
 #include "sys_extint.hpp"
 
 /*!
@@ -66,6 +66,6 @@ inline uint32_t DMADVP_GetInstance(DMADVP_Type* base)
 
 /* @} */
 
-#endif // ! HITSIC_USE_DMADVP
+#endif // ! CMODULE_USE_DMADVP
 
 #endif // ! D_DEFAULT_DRV_DMADVP_PORT_HPP

@@ -1,6 +1,6 @@
 [submodule "utilities/extlib/drv_invimu"]
 	path = utilities/extlib/drv_invimu
-	url = https://github.com/beforelight/c_inv_imu.git
+	url = https://github.com/CkovMk/drv_invimu.git
 [submodule "utilities/extlib/mlib"]
 	path = utilities/extlib/mlib
 	url = https://github.com/P-p-H-d/mlib.git
