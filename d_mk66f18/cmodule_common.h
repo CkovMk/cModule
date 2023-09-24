@@ -1,7 +1,7 @@
 /**
  * Copyright 2018 - 2021 HITSIC
  * All rights reserved.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -85,44 +85,14 @@
 
 
 
-
-
-typedef I2C_Type HAL_I2C_Type;
-typedef SPI_Type HAL_SPI_Type;
-typedef UART_Type HAL_UART_Type;
-
 #ifdef __cplusplus
 extern "C"{
 #endif
 
-extern uint32_t hal_criticalCnt;
-extern uint32_t hal_regPrimask;
+void HAL_EnterCritical(void);
 
-inline void HAL_EnterCritical(void)
-{
-    if(0u == hal_criticalCnt++)
-    {
-        hal_regPrimask = DisableGlobalIRQ();
-    }
-}
+void HAL_ExitCritical(void);
 
-inline void HAL_ExitCritical(void)
-{
-    assert(hal_criticalCnt);
-    if(--hal_criticalCnt == 0u)
-    {
-        EnableGlobalIRQ(hal_regPrimask);
-    }
-}
-
-
-
-//I2C MEM Wrapper
-
-status_t HAL_I2C_Mem_ReadBlocking(HAL_I2C_Type *_i2c, uint8_t _addr, uint32_t _reg, uint8_t _regSize, uint8_t* _data, uint32_t _dataSize);
-status_t HAL_I2C_Mem_WriteBlocking(HAL_I2C_Type *_i2c, uint8_t _addr, uint32_t _reg, uint8_t _regSize, uint8_t* _data, uint32_t _dataSize);
-
-    
 #ifdef __cplusplus
 }
 #endif

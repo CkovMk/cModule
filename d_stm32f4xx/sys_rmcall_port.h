@@ -16,10 +16,10 @@
 
 #define CMODULE_RMCALL_HEADER_MAGIC (0x554768A0U)
 
-#define kStatusGroup_RMCALL (201U)
+#define mStatusGroup_RMCALL (201U)
 
-status_t RMCALL_HOST_Tx(void *_data, uint32_t _dataSize);
-status_t RMCALL_HOST_Rx(void *_data, uint32_t _dataSize);
+mstatus_t RMCALL_HOST_Tx(void *_data, uint32_t _dataSize);
+mstatus_t RMCALL_HOST_Rx(void *_data, uint32_t _dataSize);
 void RMCALL_HOST_TxAbort(void);
 void RMCALL_HOST_RxAbort(void);
 

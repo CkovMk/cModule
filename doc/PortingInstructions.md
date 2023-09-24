@@ -62,16 +62,16 @@
     ******************************************************************************/
    
    /*! @brief Construct a status code value from a group and code number. */
-   #define MAKE_STATUS(group, code) ((((group)*100) + (code)))
+   #define CMODULE_MAKE_STATUS(group, code) ((((group)*100) + (code)))
    
    /*! @brief Status group numbers. */
    enum _status_groups
    {
-       kStatusGroup_Generic = 0,                 /*!< Group number for generic status codes. */
+       mStatusGroup_Generic = 0,                 /*!< Group number for generic status codes. */
    
-       kStatusGroup_FLASH = 1,                   /*!< Group number for FLASH status codes. */
+       mStatusGroup_FLASH = 1,                   /*!< Group number for FLASH status codes. */
        //...此处省略若干行...
-       kStatusGroup_SDIOSLV = 151,                 /*!< Group number for SDIOSLV status codes. */
+       mStatusGroup_SDIOSLV = 151,                 /*!< Group number for SDIOSLV status codes. */
    
    };
    
@@ -80,23 +80,23 @@
     */
    enum
    {
-       mStatus_Success = MAKE_STATUS(kStatusGroup_Generic, 0),  /*!< Generic status for Success. */
-       mStatus_Fail = MAKE_STATUS(kStatusGroup_Generic, 1),      /*!< Generic status for Fail. */
-       mStatus_ReadOnly = MAKE_STATUS(kStatusGroup_Generic, 2),    /*!< Generic status for read only failure. */
-       mStatus_OutOfRange = MAKE_STATUS(kStatusGroup_Generic, 3),   /*!< Generic status for out of range access. */
-       mStatus_InvalidArgument = MAKE_STATUS(kStatusGroup_Generic, 4),   /*!< Generic status for invalid argument check. */
-       mStatus_Timeout = MAKE_STATUS(kStatusGroup_Generic, 5),   /*!< Generic status for timeout. */
-       mStatus_NoTransferInProgress = MAKE_STATUS(kStatusGroup_Generic, 6),   /*!< Generic status for no transfer in progress. */
+       mstatus_Success = CMODULE_MAKE_STATUS(mStatusGroup_Generic, 0),  /*!< Generic status for Success. */
+       mstatus_Fail = CMODULE_MAKE_STATUS(mStatusGroup_Generic, 1),      /*!< Generic status for Fail. */
+       mstatus_ReadOnly = CMODULE_MAKE_STATUS(mStatusGroup_Generic, 2),    /*!< Generic status for read only failure. */
+       mstatus_OutOfRange = CMODULE_MAKE_STATUS(mStatusGroup_Generic, 3),   /*!< Generic status for out of range access. */
+       mstatus_InvalidArgument = CMODULE_MAKE_STATUS(mStatusGroup_Generic, 4),   /*!< Generic status for invalid argument check. */
+       mstatus__timeout = CMODULE_MAKE_STATUS(mStatusGroup_Generic, 5),   /*!< Generic status for timeout. */
+       mstatus_NoTransferInProgress = CMODULE_MAKE_STATUS(mStatusGroup_Generic, 6),   /*!< Generic status for no transfer in progress. */
    };
    
    
    /*! @brief Type used for all status and error return values. */
-   typedef int32_t status_t;
+   typedef int32_t mstatus_t;
    ```
 
-   其中mStatus_Group部分可以按需编写。
+   其中mstatus_Group部分可以按需编写。
 
-5. 下面的内容可按需编写。亦可按需添加`hitsic_common.c`。
+5. 下面的内容可按需编写。亦可按需添加`cmodule_common.c`。
 
 
 

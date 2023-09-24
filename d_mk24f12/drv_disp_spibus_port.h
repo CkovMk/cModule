@@ -76,7 +76,7 @@ inline void DISP_SPIBUS_delay_us(uint32_t us)
  * @param data 要发送的数据
  * @param size 数据大小
  */
-status_t DISP_SPIBUS_spiWrite(uint8_t *data, uint32_t size);
+mstatus_t DISP_SPIBUS_spiWrite(uint8_t *data, uint32_t size);
 
 /**
  * @name DMA传输
@@ -91,7 +91,7 @@ status_t DISP_SPIBUS_spiWrite(uint8_t *data, uint32_t size);
 /**
  * @brief 初始化SPI DMA传输
  */
-status_t DISP_SPIBUS_spiDmaInit(void);
+mstatus_t DISP_SPIBUS_spiDmaInit(void);
 
 
 /**
@@ -100,7 +100,7 @@ status_t DISP_SPIBUS_spiDmaInit(void);
  * @param data 要发送的数据
  * @param size 数据长度
  */
-status_t DISP_SPIBUS_spiDmaWrite(uint8_t* data, uint32_t size);
+mstatus_t DISP_SPIBUS_spiDmaWrite(uint8_t* data, uint32_t size);
 
 #endif // ! CMODULE_DISP_SSD1306_DMA
 

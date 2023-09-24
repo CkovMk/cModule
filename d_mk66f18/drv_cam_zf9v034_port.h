@@ -19,9 +19,9 @@
  * 
  * @param data 数据指针
  * @param length 数据长度
- * @return status_t 返回状态，成功时返回mStatus_Success。
+ * @return mstatus_t 返回状态，成功时返回mstatus_Success。
  */
-inline status_t CAM_ZF9V034_UartRxBlocking(uint8_t *data, uint32_t length)
+inline mstatus_t CAM_ZF9V034_UartRxBlocking(uint8_t *data, uint32_t length)
 {
     return UART_ReadBlocking(ZF9V034_UART_INST, data, length);
 }
@@ -31,9 +31,9 @@ inline status_t CAM_ZF9V034_UartRxBlocking(uint8_t *data, uint32_t length)
  * 
  * @param data 数据指针
  * @param length 数据长度
- * @return status_t 返回状态，成功时返回mStatus_Success。
+ * @return mstatus_t 返回状态，成功时返回mstatus_Success。
  */
-inline status_t CAM_ZF9V034_UartTxBlocking(const uint8_t *data, uint32_t length)
+inline mstatus_t CAM_ZF9V034_UartTxBlocking(const uint8_t *data, uint32_t length)
 {
     return UART_WriteBlocking(ZF9V034_UART_INST, data, length);
 }

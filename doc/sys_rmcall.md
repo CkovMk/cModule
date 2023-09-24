@@ -368,7 +368,7 @@ rmcall_handle_t RMIS_h_status =
 
 定义通信使用的魔数：`#define CMODULE_RMCALL_HEADER_MAGIC (0x554768A0U)`。通信双方的魔数应保持一致，可按需设置。
 
-定义状态组`#define kStatusGroup_RMCALL (201U)`，这将给予RMCALL模块全局唯一的错误状态编码。
+定义状态组`#define mStatusGroup_RMCALL (201U)`，这将给予RMCALL模块全局唯一的错误状态编码。
 
 
 
@@ -379,10 +379,10 @@ rmcall_handle_t RMIS_h_status =
 为RMCALL模块适配串口通信。首先编写四个RMCALL通信接口的函数声明，四个函数依次是：以中断方式发送数据、以中断方式接收数据、停止发送数据、停止接收数据。
 
 ```c
-status_t RMCALL_HOST_Tx(void *_data, uint32_t _dataSize); ///< 以异步方式从_data指针发送_dataSize字节数据
-status_t RMCALL_HOST_Rx(void *_data, uint32_t _dataSize); ///< 以异步方式向_data指针接收_dataSize字节数据
-status_t RMCALL_HOST_TxAbort(void); ///< 取消发送任务
-status_t RMCALL_HOST_RxAbort(void); ///< 取消接收任务
+mstatus_t RMCALL_HOST_Tx(void *_data, uint32_t _dataSize); ///< 以异步方式从_data指针发送_dataSize字节数据
+mstatus_t RMCALL_HOST_Rx(void *_data, uint32_t _dataSize); ///< 以异步方式向_data指针接收_dataSize字节数据
+mstatus_t RMCALL_HOST_TxAbort(void); ///< 取消发送任务
+mstatus_t RMCALL_HOST_RxAbort(void); ///< 取消接收任务
 ```
 
 然后创建调用接口和配置结构体：
