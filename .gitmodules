@@ -10,3 +10,6 @@
 [submodule "utilities/extlib/letter-shell"]
 	path = utilities/extlib/letter-shell
 	url = https://github.com/NevermindZZT/letter-shell.git
+[submodule "utilities/extlib/CmBacktrace"]
+	path = utilities/extlib/CmBacktrace
+	url = https://github.com/armink/CmBacktrace.git

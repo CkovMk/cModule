@@ -46,10 +46,10 @@
 /*! @brief Error codes for the DMADVP driver. */
 enum
 {
-    mStatus_DMADVP_NoEmptyBuffer = MAKE_STATUS(kStatusGroup_DMADVP, 0), /*!< No empty frame buffer in queue to load to CSI. */
-    mStatus_DMADVP_NoFullBuffer  = MAKE_STATUS(kStatusGroup_DMADVP, 1), /*!< No full frame buffer in queue to read out. */
-    mStatus_DMADVP_QueueFull = MAKE_STATUS(kStatusGroup_DMADVP, 2), /*!< Queue is full, no room to save new empty buffer. */
-    mStatus_DMADVP_FrameDone = MAKE_STATUS(kStatusGroup_DMADVP, 3), /*!< New frame received and saved to queue. */
+    mstatus_DMADVP_NoEmptyBuffer = MAKE_STATUS(kStatusGroup_DMADVP, 0), /*!< No empty frame buffer in queue to load to CSI. */
+    mstatus_DMADVP_NoFullBuffer  = MAKE_STATUS(kStatusGroup_DMADVP, 1), /*!< No full frame buffer in queue to read out. */
+    mstatus_DMADVP_QueueFull = MAKE_STATUS(kStatusGroup_DMADVP, 2), /*!< Queue is full, no room to save new empty buffer. */
+    mstatus_DMADVP_FrameDone = MAKE_STATUS(kStatusGroup_DMADVP, 3), /*!< New frame received and saved to queue. */
 };
 
 /*! @brief DMADVP signal polarity. */
@@ -93,23 +93,23 @@ struct dmadvp_handle_t
 
 /**
  * @brief DMADVP虚拟设备初始化。
- * 
+ *
  * @param base DMADVP虚拟设备地址。
  * @param config DMADVP配置结构体。可由摄像头配置组件产生。
- * @retval mStatus_Success 初始化成功。
+ * @retval mstatus_Success 初始化成功。
  */
 status_t DMADVP_Init(DMADVP_Type *base, const dmadvp_config_t *config);
 
 /**
  * @brief DMADVP虚拟设备取消初始化。
- * 
+ *
  * @param base DMADVP虚拟设备地址。
  */
 //void DMADVP_Deinit(DMADVP_Type *base);
 
 /**
  * @brief 初始化DMADVP传输句柄。一般只需在初始化时调用一次。
- * 
+ *
  * @param handle DMADVP传输句柄。
  * @param base DMADVP虚拟设备地址。
  * @param callback 要使用的DMA回调函数。
@@ -118,46 +118,46 @@ void DMADVP_TransferCreateHandle(dmadvp_handle_t *handle, DMADVP_Type *base, edm
 
 /**
  * @brief 将缓存区提交至DMADVP句柄。
- * 
+ *
  * @param base DMADVP虚拟设备地址。
  * @param handle DMADVP传输句柄。
  * @param destAddr 要提交的缓存区指针。
- * @retval mStatus_Success 提交成功。
+ * @retval mstatus_Success 提交成功。
  */
 status_t DMADVP_TransferSubmitEmptyBuffer(DMADVP_Type *base, dmadvp_handle_t *handle, uint8_t *buffer);
 
 /**
  * @brief 获取传输完成的缓存区。
- * 
+ *
  * @param base DMADVP虚拟设备地址。
  * @param handle DMADVP传输句柄。
  * @param buffer 用于接收缓存区的指针。
- * @retval mStatus_Success 成功获取到了传输完成的缓存区。
- * @retval mStatus_DMADVP_NoFullBuffer 没有可供获取的传输完成的缓存区。
+ * @retval mstatus_Success 成功获取到了传输完成的缓存区。
+ * @retval mstatus_DMADVP_NoFullBuffer 没有可供获取的传输完成的缓存区。
  */
 status_t DMADVP_TransferGetFullBuffer(DMADVP_Type *base, dmadvp_handle_t *handle, uint8_t **buffer);
 
 /**
  * @brief 启动当前传输。
- * 
+ *
  * 从空缓存队列中取出一个空缓存并启动下一帧图像的传输。
  * 在启动第一帧传输时，本函数将使能VSNC中断进行帧同步。
  * 在一帧传输结束时，如果立即启动下一帧传输，将不再进行帧同步。
  *
  * @param base DMADVP虚拟设备地址。
  * @param handle DMADVP传输句柄。
- * @retval mStatus_Success 成功启动传输。
- * @retval mStatus_EDMA_Busy 启动失败，传输进行中。
- * @retval mStatus_DMADVP_NoEmptyBuffer 启动失败，没有空缓存可供使用。
+ * @retval mstatus_Success 成功启动传输。
+ * @retval mstatus_EDMA_Busy 启动失败，传输进行中。
+ * @retval mstatus_DMADVP_NoEmptyBuffer 启动失败，没有空缓存可供使用。
  */
 status_t DMADVP_TransferStart(DMADVP_Type *base, dmadvp_handle_t *handle);
 
 /**
  * @brief 停止当前传输。
- * 
+ *
  * @param base DMADVP虚拟设备地址
  * @param handle DMADVP传输句柄
- * 
+ *
  * @note 如果您在传输中途停止传输，正在传输的buffer会留在handle->xferCfg.destAddr中。
  *              您需要手动将其提交到空缓存队列。
  * @note 在一帧传输结束时，如果想要终止传输，必须调用此函数。
@@ -166,14 +166,14 @@ void DMADVP_TransferStop(DMADVP_Type *base, dmadvp_handle_t *handle);
 
 /**
  * @brief 外部中断服务函数
- * 
+ *
  * @param userData 要响应的DMADVP传输句柄
  */
 void DMADVP_VsncExtIntHandler(void *userData);
 
 /**
  * @brief DMA回调预处理函数。必须在DMA回调函数中最先调用。
- * 
+ *
  * @param handle DMADVP句柄指针，应由回调函数中的userData经类型转换得到。
  * @param transferDone 标志位，标志是否传输完成。
  */

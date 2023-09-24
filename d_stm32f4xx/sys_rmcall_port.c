@@ -10,11 +10,11 @@
 
 extern rmcall_t rmcall_host;
 
-status_t RMCALL_HOST_Tx(void *_data, uint32_t _dataSize)
+mstatus_t RMCALL_HOST_Tx(void *_data, uint32_t _dataSize)
 {
     return HAL_UART_Transmit_IT(&huart3, (uint8_t*)_data, _dataSize);
 }
-status_t RMCALL_HOST_Rx(void *_data, uint32_t _dataSize)
+mstatus_t RMCALL_HOST_Rx(void *_data, uint32_t _dataSize)
 {
     return HAL_UART_Receive_IT(&huart3, (uint8_t*)_data, _dataSize);
 }

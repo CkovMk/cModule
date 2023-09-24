@@ -13,7 +13,7 @@
 
 #define CMODULE_DMADVP_LOG_LVL  (3U)
 
-#define kStatusGroup_DMADVP (200U)
+#define mStatusGroup_DMADVP (200U)
 
 #ifndef DMADVP_DRIVER_QUEUE_SIZE
 #define DMADVP_DRIVER_QUEUE_SIZE 4

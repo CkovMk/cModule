@@ -22,25 +22,25 @@
 
 #define CMODULE_RMCALL_HEADER_MAGIC 0x554768A0U
 
-void RMCALL_Callback(LPUART_Type *base, lpuart_handle_t *handle, status_t status, void *userData)
+void RMCALL_Callback(LPUART_Type *base, lpuart_handle_t *handle, mstatus_t status, void *userData)
 {
     userData = userData;
 
-    if (mStatus_LPUART_TxIdle == status)
+    if (mstatus_LPUART_TxIdle == status)
     {
         txBufferFull = false;
         txOnGoing    = false;
     }
 
-    if (mStatus_LPUART_RxIdle == status)
+    if (mstatus_LPUART_RxIdle == status)
     {
         rxBufferEmpty = false;
         rxOnGoing     = false;
     }
 }
 
-status_t RMCALL1_Tx(void *_data, uint32_t dataSize);
-status_t RMCALL1_Rx(void *_data, uint32_t dataSize);
+mstatus_t RMCALL1_Tx(void *_data, uint32_t dataSize);
+mstatus_t RMCALL1_Rx(void *_data, uint32_t dataSize);
 
 #endif // CMODULE_USE_RMCALL
 
