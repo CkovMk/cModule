@@ -1,7 +1,8 @@
 /**
  * Copyright 2018 - 2020 HITSIC
+ * Copyright 2022 - 2023 Chekhov.Ma
  * All rights reserved.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -116,7 +117,7 @@ void BUTTON_PitIsr(button_t *_inst)
 		{ //long press
 			_inst->status = BUTTON_LONG_PRES;
 			_inst->msCnt = BUTTON_TIMER_MS;
-			_inst->config->setInterrupt(_inst->intCfg = interrupt_pressdn); 
+			_inst->config->setInterrupt(_inst->intCfg = interrupt_pressdn);
             if (_inst->config->handler != NULL)
             {
                 _inst->config->handler(_inst->status, _inst->config->userData);

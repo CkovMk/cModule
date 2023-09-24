@@ -1,5 +1,6 @@
 /**
  * Copyright 2018 - 2021 HITSIC
+ * Copyright 2022 - 2023 Chekhov.Ma
  * All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -52,4 +53,3 @@ void DISP_SSD1327_BufferUpload(disp_ssd1327_fb_t *_fb);
 #endif // ! CMODULE_USE_DISP_SSD1327
 
 #endif // ! DRV_DISP_SSD1327_H
-

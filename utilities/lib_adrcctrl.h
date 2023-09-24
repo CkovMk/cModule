@@ -1,5 +1,6 @@
 /**
  * Copyright 2018 - 2021 HITSIC
+ * Copyright 2022 - 2023 Chekhov.Ma
  * All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -89,5 +90,3 @@ void ADRCCTRL_UpdateFal(adrc_t* p, float d_line);
 
 
 #endif // ! UTILITIES_LIB_ADRCCTRL_H
-
-

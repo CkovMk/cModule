@@ -1,7 +1,8 @@
 /**
  * Copyright 2018 - 2020 HITSIC
+ * Copyright 2022 - 2023 Chekhov.Ma
  * All rights reserved.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -50,8 +51,8 @@ status_t HAL_I2C_Mem_WriteBlocking(HAL_I2C_Type *_i2c, uint8_t _addr, uint32_t _
 	return I2C_MasterTransferBlocking(_i2c, &tof_i2c_xfer);
 }
 
-    
-    
+
+
 #ifdef __cplusplus
 }
 #endif

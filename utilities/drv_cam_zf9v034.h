@@ -1,5 +1,6 @@
 /**
  * Copyright 2018 - 2021 HITSIC
+ * Copyright 2022 - 2023 Chekhov.Ma
  * All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -82,39 +83,39 @@ typedef struct _cam_zf9v034_configPacket cam_zf9v034_configPacket_t;
 
 /**
  * @brief 获取摄像头的默认配置。
- * 
+ *
  * @param config 要获取的配置信息的地址
  */
 void CAM_ZF9V034_GetDefaultConfig(cam_zf9v034_configPacket_t *config);
 
 /**
  * @brief 配置摄像头内部配置信息
- * 
+ *
  * @param config 要发送的配置信息的地址
  */
 void CAM_ZF9V034_CfgWrite(const cam_zf9v034_configPacket_t *config);
 
 /**
  * @brief 获取摄像头内部配置信息
- * 
+ *
  * @param config 要接收的配置信息的地址
  */
 void CAM_ZF9V034_CfgRead(cam_zf9v034_configPacket_t *config);
 
 /**
  * @brief 获取摄像头固件版本
- * 
+ *
  * @return uint16_t 接收到的版本数据 //FIXME: 接受失败怎么办？
  */
 uint16_t CAM_ZF9V034_GetVersion(void);
 
 /**
  * @brief 单独设置摄像头曝光时间
- * 
+ *
  * @param light 设置曝光时间越大图像越亮，摄像头收到后会根据分辨率及FPS计算最大曝光时间。
  *                  如果设置的数据过大，那么摄像头将会设置这个最大值
  * @return uint16_t 当前曝光值，用于确认是否正确写入
- * 
+ *
  * @note 该数据不会保存到摄像头的EEPROM，下次上电此配置将会丢失，需要重新配置。
  */
 uint16_t CAM_ZF9V034_SetExposeTime(uint16_t light);
@@ -127,7 +128,7 @@ typedef dmadvp_config_t receiver_config_type;
 
 /**
  * @brief 获取摄像头接受器的配置信息，用于DMADVP库。
- * 
+ *
  * @param config 要写入的DMADVP配置结构体
  * @param camConfig 要读取的ZF9V034摄像头配置结构体
  */
@@ -138,7 +139,7 @@ void CAM_ZF9V034_GetReceiverConfig(receiver_config_type *config, const cam_zf9v0
 typedef csi_config_t receiver_config_type;
 /**
  * @brief 获取摄像头接受器的配置信息，用于RTCSI库。
- * 
+ *
  * @param config 要写入的DCSIP配置结构体
  * @param camConfig 要读取的ZF9V034摄像头配置结构体
  */
