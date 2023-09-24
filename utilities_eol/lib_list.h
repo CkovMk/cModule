@@ -1,7 +1,8 @@
 /**
  * Copyright 2018 - 2021 HITSIC
+ * Copyright 2022 - 2023 Chekhov.Ma
  * All rights reserved.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -25,7 +26,7 @@
  * @company	        哈工大智能车创新俱乐部
  * @author     		肖日涛 (QQ:1761690868); C.M. (QQ:905497173)
  * @version    		v1.1
- * @Software 		
+ * @Software
  * @Target_core		any platform
  * @date       		ver1.0 2019.09.26 by 肖日涛
  * @date            ver1.1 2019.09.28 by C.M.
@@ -84,7 +85,7 @@ typedef struct list_struct {
 
 /**
  * @brief   链表的构造函数。
- * 
+ *
  * @param  {list_t*} p    : list对象句柄。
  * @param  {unsigned} int : 每个node存储的数据多大。
  */

@@ -1,7 +1,8 @@
 /**
  * Copyright 2018 - 2020 HITSIC
+ * Copyright 2022 - 2023 Chekhov.Ma
  * All rights reserved.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -24,7 +25,7 @@ extern "C"{
 uint32_t hal_criticalCnt = 0;
 uint32_t hal_regPrimask = 0;
 
-    
+
 #ifdef __cplusplus
 }
 #endif

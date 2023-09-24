@@ -1,7 +1,8 @@
 /**
  * Copyright 2018 - 2021 HITSIC
+ * Copyright 2022 - 2023 Chekhov.Ma
  * All rights reserved.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -21,7 +22,7 @@
  * @date 	:	v0.2-beta.1     2020.04.20
  * @date    :   v0.2.2          2020.10.29
  * @date    :   v0.3.0          2021.04.02
- * 
+ *
  * @note    :   依赖库：sys_extint.h、sys_pitmgr.h
                 依赖库必须先初始化。
  */
@@ -48,7 +49,7 @@ extern "C"{
 /** @brief : 软件版本 */
 #define DRV_BUTTON_VERSION (CMODULE_MAKE_VERSION(0u, 3u, 0u))
 
-typedef enum 
+typedef enum
 {
     BUTTON_STAT_NONE = 0, ///< button no operation
     BUTTON_SHRT_PRES = 1, ///< button short press
@@ -83,7 +84,7 @@ typedef struct
     void *userData;
 }button_config_t;
 
-typedef struct 
+typedef struct
 {
     button_config_t *config; // TODO: const
     button_interrupt_t intCfg;
