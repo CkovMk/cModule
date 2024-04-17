@@ -1,3 +1,19 @@
+/**
+ * Copyright 2022 - 2023 Chekhov.Ma
+ * All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 #include "sys_rmcall_port.h"
 
 #if defined(CMODULE_USE_RMCALL) && (CMODULE_USE_RMCALL > 0)
@@ -106,7 +122,7 @@ mstatus_t RMCALL_PreInitHook(rmcall_t *_inst)
     ttyPortId = open(param_ttyPath, O_RDWR);
 
     // Check for errors
-    
+
     if (ttyPortId < 0) {
         SYSLOG_E("Error %i from open: %s", errno, strerror(errno));
         assert(0);
@@ -123,7 +139,7 @@ mstatus_t RMCALL_PreInitHook(rmcall_t *_inst)
     // is undefined
     int retVal = tcgetattr(ttyPortId, &tty);
 
-    if(retVal != 0) 
+    if(retVal != 0)
     {
         SYSLOG_E("Error %i from tcgetattr: %s", errno, strerror(errno));
         assert(0);
@@ -169,7 +185,7 @@ mstatus_t RMCALL_PreInitHook(rmcall_t *_inst)
     cfsetospeed(&tty, B115200);
 
     // Save tty settings, also checking for error
-    if (tcsetattr(ttyPortId, TCSANOW, &tty) != 0) 
+    if (tcsetattr(ttyPortId, TCSANOW, &tty) != 0)
     {
         SYSLOG_E("Error %i from tcsetattr: %s", errno, strerror(errno));
         assert(0);

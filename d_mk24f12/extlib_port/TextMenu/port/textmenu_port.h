@@ -1,7 +1,7 @@
 /**
  * Copyright 2018 - 2020 HITSIC
  * All rights reserved.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -88,7 +88,7 @@
 
 /**
  * @brief 字符缓存大小（行、列）
- * 
+ *
  * 行、列均为实际能够显示的行数和列数，不需要考虑C语言的'\0'。
  */
 #define TEXTMENU_DISPLAY_STRBUF_ROW (16u)
@@ -170,7 +170,7 @@
 #define TEXTMENU_NVM_AddressRead(addr, buf, byteCnt)		FLASH_AddressRead(addr, buf, byteCnt)	///< 读指定地址。必须返回表示操作是否成功的值。
 #define TEXTMENU_NVM_SectorRead(sect, buf)		FLASH_SectorRead(sect, buf)						///< 读指定扇区。sect为扇区号，buf为缓存区。必须返回表示操作是否成功的值。
 #define TEXTMENU_NVM_SectorWrite(sect, buf)		FLASH_SectorWrite(sect, buf)					///< 写指定扇区。sect为扇区号，buf为缓存区。必须返回表示操作是否成功的值。
-#define TEXTMENU_NVM_RETVAL_SUCCESS				mstatus_FTFx_Success							///< flash接口操作成功的返回值。如果返回值不等一此值则表示操作失败，MENU_NVM接口将向上层报告错误（mstatus_Fail）。
+#define TEXTMENU_NVM_RETVAL_SUCCESS				mStatus_FTFx_Success							///< flash接口操作成功的返回值。如果返回值不等一此值则表示操作失败，MENU_NVM接口将向上层报告错误（mStatus_Fail）。
 
 extern int32_t menu_currRegionNumAdj[3];
 extern const char menu_itemNameStr_RegnSel[];
@@ -185,7 +185,7 @@ void MENU_Data_NvmSave(int32_t _region);
 /**
  * @brief : 保存整个菜单到NVM。
  * 该函数将使用全局变量 menu_currRegionNum 中保存的局部存储区号。
- * 
+ *
  * @param {menu_keyOp_t* const} _op : 按键操作接口传入的按键操作
  */
 void MENU_Data_NvmSave_Boxed(menu_keyOp_t *const _op);
@@ -230,7 +230,7 @@ void MENU_Data_NvmReadRegionConfig(void);
 /**
  * @brief : 从NVM中读取当前局部存储区号。
  * 该数值设置为不自动保存。
- * 
+ *
  * @param {menu_keyOp_t* const} _op : 按键操作接口传入的按键操作
  */
 void MENU_Data_NvmReadRegionConfig_Boxed(menu_keyOp_t *const _op);
@@ -241,4 +241,3 @@ void MENU_Data_NvmReadRegionConfig_Boxed(menu_keyOp_t *const _op);
 
 
 #endif // ! D_MK24F12_TEXTMENU_PORT_H
-

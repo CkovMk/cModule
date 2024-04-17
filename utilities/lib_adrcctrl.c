@@ -1,3 +1,20 @@
+/**
+ * Copyright 2018 - 2021 HITSIC
+ * Copyright 2022 - 2023 Chekhov.Ma
+ * All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 #include <lib_adrcctrl.h>
 
 #ifdef __cplusplus
@@ -23,7 +40,7 @@ float ADRCCTRL_Fhan(float v1, float v2, float r0, float h0)
 	float sy = (ADRCCTRL_Sign(y+d) - ADRCCTRL_Sign(y-d))*0.5f;
 	float a = (a0 + y - a2)*sy + a2;
 	float sa = (ADRCCTRL_Sign(a+d) - ADRCCTRL_Sign(a-d))*0.5f;
-	
+
 	return -r0*(a/d - ADRCCTRL_Sign(a))*sa - r0*ADRCCTRL_Sign(a);
 }
 
@@ -49,7 +66,7 @@ void ADRCCTRL_TDInit(adrc_td_t *td_t, float h)
 void ADRCCTRL_TD(adrc_td_t *td, float v)
 {
 	float fv = ADRCCTRL_Fhan(td->v1 - v, td->v2, td->r, td->h);
-	
+
 	td->v1 += td->h * td->v2;
 	td->v2 += td->h * fv;
 }
@@ -146,7 +163,3 @@ void ADRCCTRL_UpdateFal(adrc_t *p, float d_line)
 #ifdef __cplusplus
 }
 #endif
-
-
-
-

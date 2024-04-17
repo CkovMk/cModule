@@ -136,7 +136,7 @@ void RMIS_Handler_Test(void *_recvData, uint16_t _recvSize, void *_userData)
     printf("Test! size = %d, data = %d\r\n", _recvSize, *(uint32_t*)_recvData);
 }
 
-rmcall_handle_t RMIS_Handle_test = 
+rmcall_handle_t RMIS_Handle_test =
 {
     .handleId = 0x01U,
     .handler = RMIS_Handler_Test,
@@ -169,7 +169,7 @@ void RMIS_H_HandShake(void *_recvData, uint16_t _recvSize, void *_userData)
     RMCALL_CommandSend(&rmcall_host, (uint16_t)RMIS_GEN_STATUS_ID, &retStatus, 4U);
     SYSLOG_I("RMIS: HandShake.");
 }
-rmcall_handle_t RMIS_h_handShake = 
+rmcall_handle_t RMIS_h_handShake =
 {
     .handleId = RMIS_GEN_HSHAKE_ID,
     .handler = RMIS_H_HandShake,
@@ -190,7 +190,7 @@ void RMIS_H_Status(void *_recvData, uint16_t _recvSize, void *_userData)
         SYSLOG_I("Handshake Success.");
     }
 }
-rmcall_handle_t RMIS_h_status = 
+rmcall_handle_t RMIS_h_status =
 {
     .handleId = RMIS_GEN_STATUS_ID,
     .handler = RMIS_H_Status,
@@ -388,15 +388,15 @@ mstatus_t RMCALL_HOST_RxAbort(void); ///< 取消接收任务
 然后创建调用接口和配置结构体：
 
 ```c
-rmcall_teleport_t rmcall_hostTeleport = 
+rmcall_teleport_t rmcall_hostTeleport =
 {
-    .xfer_tx = RMCALL_HOST_Tx, 
+    .xfer_tx = RMCALL_HOST_Tx,
     .xfer_rx = RMCALL_HOST_Rx,
-    .xferAbort_tx = RMCALL_HOST_TxAbort, 
+    .xferAbort_tx = RMCALL_HOST_TxAbort,
     .xferAbort_rx = RMCALL_HOST_RxAbort,
 };
 
-const rmcall_config_t rmcall_hostConfig = 
+const rmcall_config_t rmcall_hostConfig =
 {
     .teleport = &rmcall_hostTeleport,
 };
@@ -411,4 +411,3 @@ RMCALL_Init(&rmcall_host, &rmcall_hostConfig);
 随后编写串口中断服务，在串口以中断方式完成发送任务时，调用`RMCALL_TxISR()`函数；在串口以中断方式完成接收任务时，调用`RMCALL_RxISR()`函数。
 
 接下来就可以进行RMCALL通信的测试了。
-

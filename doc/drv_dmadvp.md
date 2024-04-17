@@ -138,7 +138,7 @@ struct DMADVP_Type
 
     port_interrupt_t vsncInterruptCfg;
     port_interrupt_t pclkInterruptCfg;
-    
+
     extint_handle_t extintHandle;
 };
 
@@ -212,7 +212,7 @@ struct dmadvp_handle_t
   不要调用`mstatus_t DMADVP_TransferStart(DMADVP_Type *base, dmadvp_handle_t *handle);`，直接调用`mstatus_t DMADVP_TransferStart(DMADVP_Type *base, dmadvp_handle_t *handle);`再次启动传输。
 
   - 如果此时空缓存队列不为空，则自动使用其中的缓存区进行下一次传输。
-  - 如果此时空缓存队列已空，上述函数将返回`mstatus_DMADVP_NoEmptyBuffer`。
+  - 如果此时空缓存队列已空，上述函数将返回`mStatus_DMADVP_NoEmptyBuffer`。
 
   随后继续按单缓存中的方法获取传输完毕的缓存区。
 
@@ -221,4 +221,3 @@ struct dmadvp_handle_t
 ## 移植指南
 
 （待续）
-

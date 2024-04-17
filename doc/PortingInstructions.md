@@ -16,7 +16,7 @@
 
 - 开发环境必须具有全套C标准库，且能够使用大部分标准库函数。目前我们遇到的问题有：assert缺失、动态内存分配缺失。
 
-### GCC 
+### GCC
 
 
 
@@ -44,11 +44,11 @@
   ```c
   #ifndef D_YOUR_DEVICE_CMODULE_COMMON_H
   #define D_YOUR_DEVICE_CMODULE_COMMON_H
-  
+
   #include "inc_your_device_lib.h"
-  
+
   //Other Code ...
-  
+
   #endif // ! D_YOUR_DEVICE_CMODULE_COMMON_H
   ```
 
@@ -60,41 +60,41 @@
    /*******************************************************************************
     * Return Value System
     ******************************************************************************/
-   
+
    /*! @brief Construct a status code value from a group and code number. */
    #define CMODULE_MAKE_STATUS(group, code) ((((group)*100) + (code)))
-   
+
    /*! @brief Status group numbers. */
    enum _status_groups
    {
        mStatusGroup_Generic = 0,                 /*!< Group number for generic status codes. */
-   
+
        mStatusGroup_FLASH = 1,                   /*!< Group number for FLASH status codes. */
        //...此处省略若干行...
        mStatusGroup_SDIOSLV = 151,                 /*!< Group number for SDIOSLV status codes. */
-   
+
    };
-   
+
    /*! \public
     * @brief Generic status return codes.
     */
    enum
    {
-       mstatus_Success = CMODULE_MAKE_STATUS(mStatusGroup_Generic, 0),  /*!< Generic status for Success. */
-       mstatus_Fail = CMODULE_MAKE_STATUS(mStatusGroup_Generic, 1),      /*!< Generic status for Fail. */
-       mstatus_ReadOnly = CMODULE_MAKE_STATUS(mStatusGroup_Generic, 2),    /*!< Generic status for read only failure. */
-       mstatus_OutOfRange = CMODULE_MAKE_STATUS(mStatusGroup_Generic, 3),   /*!< Generic status for out of range access. */
-       mstatus_InvalidArgument = CMODULE_MAKE_STATUS(mStatusGroup_Generic, 4),   /*!< Generic status for invalid argument check. */
-       mstatus__timeout = CMODULE_MAKE_STATUS(mStatusGroup_Generic, 5),   /*!< Generic status for timeout. */
-       mstatus_NoTransferInProgress = CMODULE_MAKE_STATUS(mStatusGroup_Generic, 6),   /*!< Generic status for no transfer in progress. */
+       mStatus_Success = CMODULE_MAKE_STATUS(mStatusGroup_Generic, 0),  /*!< Generic status for Success. */
+       mStatus_Fail = CMODULE_MAKE_STATUS(mStatusGroup_Generic, 1),      /*!< Generic status for Fail. */
+       mStatus_ReadOnly = CMODULE_MAKE_STATUS(mStatusGroup_Generic, 2),    /*!< Generic status for read only failure. */
+       mStatus_OutOfRange = CMODULE_MAKE_STATUS(mStatusGroup_Generic, 3),   /*!< Generic status for out of range access. */
+       mStatus_InvalidArgument = CMODULE_MAKE_STATUS(mStatusGroup_Generic, 4),   /*!< Generic status for invalid argument check. */
+       mStatus__timeout = CMODULE_MAKE_STATUS(mStatusGroup_Generic, 5),   /*!< Generic status for timeout. */
+       mStatus_NoTransferInProgress = CMODULE_MAKE_STATUS(mStatusGroup_Generic, 6),   /*!< Generic status for no transfer in progress. */
    };
-   
-   
+
+
    /*! @brief Type used for all status and error return values. */
    typedef int32_t mstatus_t;
    ```
 
-   其中mstatus_Group部分可以按需编写。
+   其中mStatus_Group部分可以按需编写。
 
 5. 下面的内容可按需编写。亦可按需添加`cmodule_common.c`。
 
@@ -122,6 +122,3 @@
 
 
 ## 贡献
-
-
-
