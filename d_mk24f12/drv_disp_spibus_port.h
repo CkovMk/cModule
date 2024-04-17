@@ -26,7 +26,7 @@
 #endif // ! CMODULE_DISP_SSD1306_DMA
 /**
  * @brief 设置RST脚电平。
- * 
+ *
  * @param x RST脚的电平状态，正逻辑。
  */
 inline void DISP_SPIBUS_gpioSetRST(uint8_t x)
@@ -36,7 +36,7 @@ inline void DISP_SPIBUS_gpioSetRST(uint8_t x)
 
 /**
  * @brief 设置D/C脚电平。
- * 
+ *
  * @param x D/C脚的电平状态，正逻辑。
  */
 inline void DISP_SPIBUS_gpioSetD_C(uint8_t x)
@@ -46,7 +46,7 @@ inline void DISP_SPIBUS_gpioSetD_C(uint8_t x)
 
 /**
  * @brief 毫秒级阻塞延迟函数。
- * 
+ *
  * @param ms 延迟的毫秒数。
  */
 inline void DISP_SPIBUS_delay_ms(uint32_t ms)
@@ -72,7 +72,7 @@ inline void DISP_SPIBUS_delay_us(uint32_t us)
 
 /**
  * @brief SPI接口发送多个字节。
- * 
+ *
  * @param data 要发送的数据
  * @param size 数据大小
  */

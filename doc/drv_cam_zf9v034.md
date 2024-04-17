@@ -62,25 +62,25 @@ by CkovMk @hitsic 2020.10.20
 ```c++
 /**
  * @brief 阻塞同步串口接收函数。
- * 
+ *
  * @param data 数据指针
  * @param length 数据长度
- * @return mstatus_t 返回状态，成功时返回mstatus_Success。
+ * @return mstatus_t 返回状态，成功时返回mStatus_Success。
  */
 inline mstatus_t CAM_ZF9V034_UartRxBlocking(uint8_t *data, uint32_t length);
 
 /**
  * @brief 阻塞同步串口发送函数。
- * 
+ *
  * @param data 数据指针
  * @param length 数据长度
- * @return mstatus_t 返回状态，成功时返回mstatus_Success。
+ * @return mstatus_t 返回状态，成功时返回mStatus_Success。
  */
 inline mstatus_t CAM_ZF9V034_UartTxBlocking(const uint8_t *data, uint32_t length);
 
 /**
  * @brief 毫秒级延迟函数
- * 
+ *
  * @param ms 要延迟的毫秒数
  */
 inline void CAM_ZF9V034_Delay_ms(uint32_t ms);
@@ -99,8 +99,3 @@ inline void CAM_ZF9V034_Delay_ms(uint32_t ms);
 #define ZF9V034_USE_RTCSI (0U)
 #endif // ! ZF9V034_USE_RTCSI
 ```
-
-
-
-
-

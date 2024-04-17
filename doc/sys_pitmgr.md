@@ -98,7 +98,7 @@ by CkovMk @hitsic 2018.12.20
 
 - **初始化函数 `mstatus_t PITMGR_Init(pitmgr_t *_inst, uint32_t _period_us);`**
 
-  该函数用于初始化PITMGR。调用该函数时，该函数会清空任务列表并复位计时器。当前版本中本函数总是返回`mstatus_Success`。
+  该函数用于初始化PITMGR。调用该函数时，该函数会清空任务列表并复位计时器。当前版本中本函数总是返回`mStatus_Success`。
 
 - **解初始化函数 `void PITMGR_Deinit(pitmgr_t *_inst);`**
 
@@ -106,11 +106,11 @@ by CkovMk @hitsic 2018.12.20
 
   该函数用于向任务列表中插入一个任务。
 
-  返回值：成功返回`mstatus_Success`，异常返回`mstatus_Fail`。
+  返回值：成功返回`mStatus_Success`，异常返回`mStatus_Fail`。
 
 - **移除任务 `mstatus_t PITMGR_HandleRemove(pitmgr_t *_inst, pitmgr_handle_t *_handle);`**
 
-  该函数用于移除任务。如果任务存在且成功移除则返回`mstatus_Success`，如果任务不存在或移除失败，则返回`mstatus_Fail`。
+  该函数用于移除任务。如果任务存在且成功移除则返回`mStatus_Success`，如果任务不存在或移除失败，则返回`mStatus_Fail`。
 
 - **服务接口 `void PITMGR_Isr(pitmgr_t *_inst);`**
 
@@ -140,7 +140,7 @@ by CkovMk @hitsic 2018.12.20
 
 - 创建服务函数：
   创建一个符合`typedef void (*pitMgr_t::handler_t)(void *userData);`定义的服务函数。
-  
+
 - 创建服务描述符：
   ```c
   pitmgr_handle_t imu_invensense_test_pitHandle =
@@ -153,21 +153,21 @@ by CkovMk @hitsic 2018.12.20
   };
   ```
 
-  
 
-  
+
+
 
 - 将服务函数注册至列表
 
   调用`mstatus_t PITMGR_HandleInsert(pitmgr_t *_inst, pitmgr_handle_t *_handle);`函数，即可注册该服务函数。执行此函数不会修改服务描述符。
 
-  成功返回mstatus_Success，异常返回mstatus_Fail。
+  成功返回mStatus_Success，异常返回mStatus_Fail。
 
 - 从列表中删除服务函数
 
   调用`mstatus_t PITMGR_HandleRemove(pitmgr_t *_inst, pitmgr_handle_t *_handle);`函数，即可取消该服务描述符。执行此函数不会修改服务描述符。
-  
-  成功返回mstatus_Success，异常返回mstatus_Fail。
+
+  成功返回mStatus_Success，异常返回mStatus_Fail。
 
 
 
@@ -192,8 +192,8 @@ by CkovMk @hitsic 2018.12.20
 - **宏：启用移植文件内的中断服务函数 `CMODULE_PITMGR_DEFAULT_IRQ`**
 
   0：禁用；其他：启用。启用该宏将启用位于`sys_pitmgr_port.cpp`内的中断服务函数。您也可以在其他地方自行编写中断服务函数。例如，如果您更倾向于把中断服务函数集中在一个源文件内管理，就可以禁用此选项。
-  
-  
+
+
 
 ### 移植文件`sys_pitmgr_port.c`
 
@@ -207,7 +207,7 @@ by CkovMk @hitsic 2018.12.20
   #ifdef __cplusplus
   extern "C"{
   #endif
-  
+
 	#if defined(CMODULE_PITMGR_DEFAULT_IRQ) && (CMODULE_PITMGR_DEFAULT_IRQ > 0)
 	void LPTMR0_IRQHandler(void)
 	{
@@ -216,11 +216,8 @@ by CkovMk @hitsic 2018.12.20
 		PITMGR_Isr(&pitmgr_main);
 	}
 	#endif // ! HTISIC_PITMGR_USE_IRQHANDLER
-	
+
 	#ifdef __cplusplus
 	}
 	#endif
 	```
-	
-	
-

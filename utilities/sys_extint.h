@@ -76,14 +76,14 @@ typedef struct _extint
  * 该函数在extint_port中实现。
  *
  * @param  {INTC_Type*} : 用于管理 外部中断的外设地址。
- * @return {status_t} : 成功返回mstatus_Success，异常返回mstatus_Fail。
+ * @return {status_t} : 成功返回mStatus_Success，异常返回mStatus_Fail。
  */
 extint_t *EXTINT_GetInst(INTC_Type *base);
 
 /**
  * @brief : EXTINT初始化。
  *
- * @return {status_t} : 成功返回mstatus_Success，异常返回mstatus_Fail。
+ * @return {status_t} : 成功返回mStatus_Success，异常返回mStatus_Fail。
  */
 status_t EXTINT_Init(extint_t *_inst);
 
@@ -100,7 +100,7 @@ void EXTINT_Isr(extint_t *_inst, uint32_t flag);
  *
  * @param {extint_t*} _inst          : 要操作的EXTINT实例。
  * @param {extint_handle_t*} _handle : 该EXTINT任务的任务描述符指针。
- * @return {status_t}                : 成功返回mstatus_Success，异常返回mstatus_Fail。
+ * @return {status_t}                : 成功返回mStatus_Success，异常返回mStatus_Fail。
  */
 status_t EXTINT_HandleInsert(extint_t *_inst, extint_handle_t *_handle);
 
@@ -109,7 +109,7 @@ status_t EXTINT_HandleInsert(extint_t *_inst, extint_handle_t *_handle);
  *
  * @param {extint_t*} _inst          : 要操作的EXTINT实例。
  * @param {extint_handle_t*} _handle : 该EXTINT任务的任务描述符指针。
- * @return {status_t}                : 成功返回mstatus_Success，异常返回mstatus_Fail。
+ * @return {status_t}                : 成功返回mStatus_Success，异常返回mStatus_Fail。
  */
 status_t EXTINT_HandleRemove(extint_t *_inst, extint_handle_t *_handle);
 

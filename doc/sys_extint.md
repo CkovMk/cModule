@@ -92,7 +92,7 @@ by CkovMk @hitsic 2018.12.23
 
 - **初始化函数 `mstatus_t EXTINT_Init(extint_t *_inst);`**
 
-  该函数用于初始化EXTINT。调用该函数时，该函数会清空任务列表。当前版本中本函数总是返回`mstatus_Success`。
+  该函数用于初始化EXTINT。调用该函数时，该函数会清空任务列表。当前版本中本函数总是返回`mStatus_Success`。
 
 - **解初始化函数 `void EXTINT_Deinit(extint_t *_inst);`**
 
@@ -100,11 +100,11 @@ by CkovMk @hitsic 2018.12.23
 
   该函数用于向任务列表中插入一个任务。
 
-  返回值：成功返回mstatus_Success，异常返回mstatus_Fail。
+  返回值：成功返回mStatus_Success，异常返回mStatus_Fail。
 
 - **移除任务 `mstatus_t EXTINT_HandleRemove(extint_t *_inst, extint_handle_t *_handle);`**
 
-  该函数用于移除任务。如果任务存在且成功移除则返回`mstatus_Success`，如果任务不存在或移除失败，则返回`mstatus_Fail`。
+  该函数用于移除任务。如果任务存在且成功移除则返回`mStatus_Success`，如果任务不存在或移除失败，则返回`mStatus_Fail`。
 
 - **服务接口 `EXTINT_Isr(extint_t *_inst, uint32_t flag)`**
 
@@ -155,21 +155,21 @@ by CkovMk @hitsic 2018.12.23
   }extint_handle_t;
   ```
 
-  
 
-  
+
+
 
 - 将服务函数注册至列表
 
   调用`mstatus_t EXTINT_HandleInsert(extint_t *_inst, extint_handle_t *_handle);`函数，即可注册该服务函数。执行此函数不会修改服务描述符。
 
-  成功返回mstatus_Success，异常返回mstatus_Fail。
+  成功返回mStatus_Success，异常返回mStatus_Fail。
 
 - 从列表中删除服务函数
 
   调用`mstatus_t EXTINT_HandleRemove(extint_t *_inst, extint_handle_t *_handle);`函数，即可取消该服务描述符。执行此函数不会修改服务描述符。
 
-  成功返回mstatus_Success，异常返回mstatus_Fail。
+  成功返回mStatus_Success，异常返回mStatus_Fail。
 
 
 
@@ -194,7 +194,7 @@ by CkovMk @hitsic 2018.12.23
   ```c++
   typedef PORT_Type INTC_Type;
   typedef port_interrupt_t extInt_interruptMode_t;
-  
+
   #define EXTINT_InterruptOrDMADisabled	kPORT_InterruptOrDMADisabled
   #define EXTINT_DMARisingEdge 			kPORT_DMARisingEdge
   #define EXTINT_DMAFallingEdge 			kPORT_DMAFallingEdge
@@ -204,7 +204,7 @@ by CkovMk @hitsic 2018.12.23
   #define EXTINT_InterruptFallingEdge 	kPORT_InterruptFallingEdge
   #define EXTINT_InterruptEitherEdge 		kPORT_InterruptEitherEdge
   #define EXTINT_InterruptLogicOne		kPORT_InterruptLogicOne
-  
+
   #define EXTINT_SetInterruptConfig(_intc, _pin, _cfg) 	PORT_SetPinInterruptConfig(_intc, _pin, _cfg)
   #define EXTINT_GetInterruptFlags(_intc) 				PORT_GetPinsInterruptFlags(_intc)
   #define EXTINT_ClearInterruptFlags(_intc, _mask) 	    PORT_ClearPinsInterruptFlags(_intc, _mask)
@@ -212,7 +212,7 @@ by CkovMk @hitsic 2018.12.23
 
   这里主要是移植一些平台相关的定义和函数。
 
-  
+
 
   ```c++
   #define HTISIC_EXTINT_DEFAULT_IRQ 	(1U)
@@ -220,7 +220,7 @@ by CkovMk @hitsic 2018.12.23
 
   该宏控制是否启用`sys_extint_port.hpp`中的中断服务函数。
 
-  
+
 
 - **查询函数**
 
@@ -232,7 +232,7 @@ by CkovMk @hitsic 2018.12.23
   }
   ```
   此函数的功能是根据控制GPIO输入、输出的外设地址查询对应的控制中断的外设地址。如果此单片机中控制GPIO输入、输出等功能的外设与控制外部中断的外设不同（例如K66的GPIO和PORT），则需要适配此函数。
-  
+
   对于控制GPIO输入、输出等功能的外设与控制外部中断的外设相同的单片机（例如RT1052），由于`INTC_Type`实际上就是`GPIO_Type`，直接返回传入的参数即可。
 
 
@@ -243,15 +243,15 @@ by CkovMk @hitsic 2018.12.23
 
   ```c++
   #include <sys_extint.h>
-  
+
   #if defined(CMODULE_USE_EXTINT) && (CMODULE_USE_EXTINT > 0)
-  
+
   #ifdef __cplusplus
   extern "C"{
   #endif
-  
+
   extern extint_t extint_porta, extint_portb, extint_portc, extint_portd, extint_porte;
-  
+
   extint_t *EXTINT_GetInst(INTC_Type *base)
   {
       switch((uint32_t)base)
@@ -270,37 +270,37 @@ by CkovMk @hitsic 2018.12.23
           return NULL;
       }
   }
-  
+
   #if defined(HTISIC_EXTINT_DEFAULT_IRQ) && (HTISIC_EXTINT_DEFAULT_IRQ > 0)
-  
+
   void PORTA_IRQHandler(void)
   {
       uint32_t flag = PORT_GetPinsInterruptFlags(PORTA);
       EXTINT_Isr(&extint_porta, flag);
       PORT_ClearPinsInterruptFlags(PORTA, 0xffff);
   }
-  
+
   void PORTB_IRQHandler(void)
   {
       uint32_t flag = PORT_GetPinsInterruptFlags(PORTB);
       EXTINT_Isr(&extint_portb, flag);
       PORT_ClearPinsInterruptFlags(PORTB, 0xffff);
   }
-  
+
   void PORTC_IRQHandler(void)
   {
       uint32_t flag = PORT_GetPinsInterruptFlags(PORTC);
       EXTINT_Isr(&extint_portc, flag);
       PORT_ClearPinsInterruptFlags(PORTC, 0xffff);
   }
-  
+
   void PORTD_IRQHandler(void)
   {
       uint32_t flag = PORT_GetPinsInterruptFlags(PORTD);
       EXTINT_Isr(&extint_portd, flag);
       PORT_ClearPinsInterruptFlags(PORTD, 0xffff);
   }
-  
+
   void PORTE_IRQHandler(void)
   {
       uint32_t flag = PORT_GetPinsInterruptFlags(PORTE);
@@ -308,13 +308,11 @@ by CkovMk @hitsic 2018.12.23
       PORT_ClearPinsInterruptFlags(PORTE, 0xffff);
   }
   #endif // ! HTISIC_EXTMGR_USE_IRQHANDLER
-  
+
   #ifdef __cplusplus
   }
   #endif
-  
+
   #endif // ! CMODULE_USE_EXTINT
-  
+
   ```
-  
-  

@@ -1,3 +1,20 @@
+/**
+ * Copyright 2018 - 2021 HITSIC
+ * Copyright 2022 - 2023 Chekhov.Ma
+ * All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 #include <sys_rmcall.h>
 
 /*!
@@ -117,7 +134,7 @@ void RMCALL_RxStatusMachine(rmcall_t *_inst)
         }
         else //recv data.
         {
-            if(_inst->rxHeaderBuffer.dataSize > RMCALL_PUBLIC_BUF_SIZE) 
+            if(_inst->rxHeaderBuffer.dataSize > RMCALL_PUBLIC_BUF_SIZE)
             {
                 // rx data cannot fit in buffer. discard data.
                 _inst->statusFlag  = _inst->statusFlag & (~rmcall_statusFlag_rxBusy);
@@ -133,7 +150,7 @@ void RMCALL_RxStatusMachine(rmcall_t *_inst)
             }
         }
         return;
-        
+
     case rmcall_statusFlag_rxData:
 #if defined(RMCALL_TRAILER_CRC32) && (RMCALL_TRAILER_CRC32 != 0U)
             // rx data finished. rx trailer.
@@ -201,7 +218,7 @@ mstatus_t RMCALL_Init(rmcall_t *_inst, rmcall_config_t const * const _config)
     rmcall_isrDict_init(_inst->isrDict);
 
     SYSLOG_I("Init Comlpete.");
-    
+
     return mStatus_Success;
 }
 
@@ -210,7 +227,7 @@ void RMCALL_DeInit(rmcall_t *_inst)
     _inst->teleport = NULL;
 
     _inst->statusFlag = 0U;
-    
+
     free(_inst->rxDataBuffer);
     _inst->rxDataBuffer = NULL;
 
@@ -223,7 +240,7 @@ mstatus_t RMCALL_HandleInsert(rmcall_t *_inst, rmcall_handle_t *_handle)
 {
     assert(_inst);
     assert(_handle);
-    
+
     if(_handle->handleId > 65533)
     {
         SYSLOG_W("Insert Fail. Handle ID Out of Range !");
@@ -268,7 +285,7 @@ mstatus_t RMCALL_CommandSend(rmcall_t *_inst, uint16_t _handleId, void *_data, u
     _inst->txTailBuffer = CRC32_Calculate ((void*)&_inst->txHeaderBuffer, sizeof(rmcall_header_t), 0xffffffffU);
     _inst->txTailBuffer = CRC32_Calculate(_inst->txDataBuffer, _inst->txHeaderBuffer.dataSize, _inst->txTailBuffer);
 #endif // RMCALL_TRAILER_CRC32
-    
+
     _inst->statusFlag |= rmcall_statusFlag_txHead;
     SYSLOG_D("Tx head. ID = 0x%4.4x, size = %4.4d.", _handleId, _dataSize);
     ret = _inst->teleport->xfer_tx((void *)&_inst->txHeaderBuffer, sizeof(rmcall_header_t));
@@ -293,9 +310,9 @@ mstatus_t RMCALL_CommandRecvEnable(rmcall_t *_inst)
         {
             SYSLOG_E("Rx enable failed. Transfer error.");
         }
-        
+
     }
-    
+
     return ret;
 }
 
@@ -310,7 +327,7 @@ mstatus_t RMCALL_CommandRecvDisable(rmcall_t *_inst)
         SYSLOG_I("Rx disabled.");
         return mStatus_Success;
     }
-    
+
     SYSLOG_W("Rx disable failed. Rx busy.");
     return mStatus_Fail;
 }
@@ -323,7 +340,7 @@ void RMCALL_TxIsr(rmcall_t *_inst)
 void RMCALL_RxIsr(rmcall_t *_inst)
 {
     RMCALL_RxStatusMachine(_inst);
-        
+
     if(0U == (_inst->statusFlag & rmcall_statusFlag_rxBusy))
     {
         if(_inst->statusFlag & rmcall_statusFlag_rxDataDiscard)
@@ -354,7 +371,7 @@ void RMCALL_RxIsr(rmcall_t *_inst)
             return;
         }
 #endif // RMCALL_TRAILER_CRC32
-        
+
         rmcall_handle_t **p_handle = rmcall_isrDict_get(_inst->isrDict, _inst->rxHeaderBuffer.handleId);
         if(NULL == p_handle)
         {
