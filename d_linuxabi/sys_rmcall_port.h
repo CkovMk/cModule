@@ -1,5 +1,6 @@
 /**
- * Copyright 2022 - 2023 Chekhov.Ma
+ * Copyright 2018 - 2021 HITSIC
+ * Copyright 2022 - 2023 NXP
  * All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,6 +32,8 @@
 #if defined(CMODULE_USE_RMCALL) && (CMODULE_USE_RMCALL > 0)
 
 #define RMCALL_HEADER_MAGIC (0x554768A0U)
+//#define RMCALL_HEADER_RX_MAGIC (0x554768A0U)
+//#define RMCALL_HEADER_TX_MAGIC (0x554768A0U)
 #define RMCALL_SYSLOG_LVL (3U)
 #define RMCALL_PUBLIC_BUF_SIZE (256U)
 #define mStatusGroup_RMCALL (201U)

@@ -1,4 +1,5 @@
 /**
+ * Copyright 2018 - 2021 HITSIC
  * Copyright 2022 - 2023 Chekhov.Ma
  * All rights reserved.
  *
@@ -20,7 +21,7 @@
 #include "cmodule_common.h"
 #include <stdio.h>
 
-#if defined(DEBUG) && (DEBUG != 0U) // ENABLE DEBUG
+#ifdef DEBUG
 #define SYSLOG_DEBUG
 #endif
 
