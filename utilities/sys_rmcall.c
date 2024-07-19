@@ -365,8 +365,8 @@ void RMCALL_RxIsr(rmcall_t *_inst)
             SYSLOG_V("Data:");
             char *p = _inst->rxDataBuffer;
             for(int i = 0; i < _inst->rxHeaderBuffer.dataSize; ++i)
-            {CMODULE_LOG_PRINTF("%2.2x ", *p); ++p;}
-            CMODULE_LOG_PRINTF("\n");
+            { SYSLOG_PRINTF_V("%2.2x ", *p); ++p; }
+            SYSLOG_PRINTF_V("\n");
             RMCALL_CommandRecvEnable(_inst);
             return;
         }
