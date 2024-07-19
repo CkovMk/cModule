@@ -52,6 +52,7 @@ void RMCALL_TxStatusMachine(rmcall_t *_inst)
         {
 #if defined(RMCALL_TRAILER_CRC32) && (RMCALL_TRAILER_CRC32 != 0U)
             _inst->statusFlag  = _inst->statusFlag | rmcall_statusFlag_txBusy;
+            _inst->teleport->xfer_tx((void*)&_inst->txTailBuffer, sizeof(uint32_t));
             SYSLOG_D("Tx head done. Tx tail begin.");
 #else // RMCALL_TRAILER_CRC32
             _inst->statusFlag  = _inst->statusFlag & (~rmcall_statusFlag_txBusy);
