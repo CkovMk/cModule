@@ -19,7 +19,7 @@
 #define D_MCXA153_SYS_RMCALL_PORT_H
 #include "peripherals.h"
 
-#include "../cModule/d_mcxa153/cmodule_common.h"
+#include "cmodule_common.h"
 //#include "inc_stdlib.h"
 
 #if defined(CMODULE_USE_RMCALL) && (CMODULE_USE_RMCALL > 0)
