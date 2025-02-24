@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include "../cModule/d_mcxa153/sys_rmcall_port.h"
+#include "sys_rmcall_port.h"
 
 #if defined(CMODULE_USE_RMCALL) && (CMODULE_USE_RMCALL > 0)
 

@@ -22,7 +22,7 @@
 
 #include "fsl_common.h"
 #include "fsl_debug_console.h"
-#include "../cModule/d_mcxa153/cmodule_common.h"
+#include "cmodule_common.h"
 
 #ifdef DEBUG
 #define SYSLOG_DEBUG
