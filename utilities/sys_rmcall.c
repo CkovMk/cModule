@@ -186,11 +186,13 @@ void RMCALL_RxStatusMachine(rmcall_t *_inst)
 __WEAK mstatus_t RMCALL_PreInitHook(rmcall_t *_inst)
 {
     // do nothing
+    return mStatus_Success;
 }
 
 __WEAK mstatus_t RMCALL_AftDeInitHook(rmcall_t *_inst)
 {
     // do nothing
+    return mStatus_Success;
 }
 
 mstatus_t RMCALL_Init(rmcall_t *_inst, rmcall_config_t const * const _config)
