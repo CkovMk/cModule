@@ -1,0 +1,51 @@
+# Copyright 2025 Chekhov.Ma
+#
+# SPDX-License-Identifier: Apache-2.0
+
+config CMODULE_LIB_CRC32
+    bool "Enable LIB_CRC32 module"
+    default n
+
+config CMODULE_SYS_RMCALL
+    bool "Enable SYS_RMCALL module"
+    default n
+    select CMODULE_LIB_CRC32
+
+choice
+    prompt "Select device"
+
+    config CMODULE_DEVICE_DEFAULT
+        bool "d_default"
+        default y
+
+    config CMODULE_DEVICE_KV58F24
+        bool "d_kv58f24"
+
+    config CMODULE_DEVICE_LINUXABI
+        bool "d_linuxabi"
+
+    config CMODULE_DEVICE_MCXA153
+        bool "d_mcxa153"
+
+    config CMODULE_DEVICE_MK24F12
+        bool "d_mk24f12"
+
+    config CMODULE_DEVICE_MK66F18
+        bool "d_mk66f18"
+
+    config CMODULE_DEVICE_RT1052
+        bool "d_rt1052"
+
+    config CMODULE_DEVICE_STM32F4XX
+        bool "d_stm32f4xx"
+
+endchoice
+
+rsource "d_default/Kconfig"
+rsource "d_kv58f24/Kconfig"
+rsource "d_linuxabi/Kconfig"
+rsource "d_mcxa153/Kconfig"
+rsource "d_mk24f12/Kconfig"
+rsource "d_mk66f18/Kconfig"
+rsource "d_rt1052/Kconfig"
+rsource "d_stm32f4xx/Kconfig"
