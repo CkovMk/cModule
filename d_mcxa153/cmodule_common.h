@@ -18,8 +18,12 @@
 #ifndef D_MCXA153_CMODULE_COMMON_H
 #define D_MCXA153_CMODULE_COMMON_H
 
+#ifndef __PACKED
 #define __PACKED __attribute__((packed))
+#endif // __PACKED
+#ifndef __WEAK
 #define __WEAK __attribute__((weak))
+#endif // __WEAK
 
 #include "stdint.h"
 #include "inc_mstatus.h"

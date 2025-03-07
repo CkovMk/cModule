@@ -34,3 +34,4 @@ void HAL_ExitCritical(void)
 #ifdef __cplusplus
 }
 #endif
+
