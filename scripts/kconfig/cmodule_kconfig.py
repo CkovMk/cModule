@@ -1,4 +1,7 @@
-# Originally modified from: https://git.trustedfirmware.org/TF-M/trusted-firmware-m
+# Copyright 2025 Chekhov.Ma
+# SPDX-License-Identifier: Apache-2.0
+#
+# Originally modified from: https://git.trustedfirmware.org/cModule/trusted-firmware-m
 # Original licensing information:
 #-------------------------------------------------------------------------------
 # Copyright (c) 2022-2023, Arm Limited. All rights reserved.
@@ -16,13 +19,13 @@ import menuconfig
 import guiconfig
 
 # NOTE: in_component_label is related with Kconfig menu prompt.
-in_component_label = 'TF-M component configs'
+in_component_label = 'cModule library configs'
 
 def parse_args():
     parser = argparse.ArgumentParser(description=\
-            'TF-M Kconfig tool generates CMake configurations and header file \
+            'cModule Kconfig tool generates CMake configurations and header file \
              component configurations. Terminal UI and GUI can help quickly \
-             configurate TF-M build options.')
+             configurate cModule build options.')
 
     parser.add_argument(
         '-k', '--kconfig-file',
@@ -92,7 +95,7 @@ def generate_file(dot_config):
     The .config file is the generated result from Kconfig files. It contains
     the set and un-set configs and their values.
 
-    TF-M splits the configs to build options and component options. The former
+    cModule splits the configs to build options and component options. The former
     will be written into CMake file. The latter are all under a menu which has
     the prompt which contains in_component_label. These configs will be written
     into header file.
@@ -200,8 +203,8 @@ def generate_file(dot_config):
             if name and in_component_options:
                 f_header.write('#define {:<45} {}\n'.format(name, header_val))
 
-    logging.info('TF-M build configs saved to \'{}\''.format(cmake_file))
-    logging.info('TF-M component configs saved to \'{}\''.format(header_file))
+    logging.info('cModule build configs saved to \'{}\''.format(cmake_file))
+    logging.info('cModule component configs saved to \'{}\''.format(header_file))
 
 def validate_promptless_sym(kconfig):
     """
