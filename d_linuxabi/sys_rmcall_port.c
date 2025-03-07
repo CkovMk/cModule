@@ -1,4 +1,5 @@
 /**
+ * Copyright 2018 - 2021 HITSIC
  * Copyright 2022 - 2023 Chekhov.Ma
  * All rights reserved.
  *
@@ -24,7 +25,7 @@
 #define SYSLOG_LVL RMCALL_SYSLOG_LVL
 #include <inc_syslog.h>
 
-extern rmcall_t rmcall_mcu;
+extern rmcall_t rmcall_target;
 
 int ttyPortId = -1;
 
@@ -76,7 +77,7 @@ void *RMCALL_HOST_TxThread(void *arg)
         pthread_mutex_unlock(&rmcall_txObj.mutex);
         pthread_cleanup_pop(0);
         //sleep(1);
-        RMCALL_TxIsr(&rmcall_mcu);
+        RMCALL_TxIsr(&rmcall_target);
     }
 }
 
@@ -110,7 +111,7 @@ void *RMCALL_HOST_RxThread(void *arg)
         pthread_mutex_unlock(&rmcall_rxObj.mutex);
         pthread_cleanup_pop(0);
         //sleep(1);
-        RMCALL_RxIsr(&rmcall_mcu);
+        RMCALL_RxIsr(&rmcall_target);
     }
 }
 
