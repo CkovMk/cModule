@@ -9,7 +9,8 @@ config CMODULE_LIB_CRC32
 config CMODULE_SYS_RMCALL
     bool "Enable SYS_RMCALL module"
     default n
-    select CMODULE_LIB_CRC32
+
+rsource "utilities/Kconfig.sys_rmcall"
 
 choice
     prompt "Select device"

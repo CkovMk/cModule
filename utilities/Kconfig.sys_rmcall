@@ -1,0 +1,25 @@
+# Copyright 2025 Chekhov.Ma
+#
+# SPDX-License-Identifier: Apache-2.0
+
+menu "SYS_RMCALL"
+    visible if CMODULE_SYS_RMCALL
+
+    config RMCALL_HEADER_MAGIC
+        hex "32-bit header data in little-endian hex format"
+        default 0x554768A0
+
+    config RMCALL_PUBLIC_BUFFER_SIZE
+        int "RMCALL public receive buffer size"
+        default 256
+
+    config RMCALL_TRAILER_CRC32
+        bool "Enable CRC32 checking trailer"
+        default y
+        select CMODULE_LIB_CRC32
+
+    config RMCALL_SYSLOG_LVL
+        int "RMCALL log level"
+        default 3
+
+endmenu
