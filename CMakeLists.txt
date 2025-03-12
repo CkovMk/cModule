@@ -73,10 +73,16 @@ elseif(DEFINED ZEPHYR_BASE)
 
 else()
 
-    project(cModuleLib)
+    message(STATUS "cModule: Custom environment detected")
+    message(STATUS "cModule: Global property CMODULE_PARENT_EXECUTABLE must be defined")
 
-    add_library(cModule STATIC ${cModule_Source})
-    target_include_directories(cModule INTERFACE ${cModule_PublicInclude})
-    target_include_directories(cModule PRIVATE ${cModule_Include})
+    get_property(cModule_ParentExecutable
+        GLOBAL PROPERTY
+            CMODULE_PARENT_EXECUTABLE
+    )
+
+    target_sources(${cModule_ParentExecutable} PRIVATE ${cModule_Source})
+    target_include_directories(${cModule_ParentExecutable} PRIVATE ${cModule_PublicInclude})
+    target_include_directories(${cModule_ParentExecutable} PRIVATE ${cModule_Include})
 
 endif()
