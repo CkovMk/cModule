@@ -20,6 +20,7 @@ import guiconfig
 
 # NOTE: in_component_label is related with Kconfig menu prompt.
 in_component_label = 'cModule library configs'
+prefix = 'CONFIG_'
 
 def parse_args():
     parser = argparse.ArgumentParser(description=\
@@ -114,7 +115,7 @@ def generate_file(dot_config):
     The 'FOO' will be saved into the name part of groupdict, and the 'val' will
     be saved into the 'val' part of groupdict.
     '''
-    pattern_set = re.compile('CONFIG_(?P<name>[A-Za-z|_|0-9]*)=(?P<val>\S+)')
+    pattern_set = re.compile('CONFIG_(?P<name>[A-Za-z|_|0-9]*)=(?P<val>\\S+)')
     pattern_not_set = re.compile('# CONFIG_(?P<name>[A-Za-z|_|0-9]*) is not set')
 
     with open(cmake_file, 'w') as f_cmake, open(header_file, 'w') as f_header, \
@@ -150,10 +151,8 @@ def generate_file(dot_config):
                 continue
 
             # Write the menu prompt.
-            if menu_start and not in_component_options:
+            if menu_start:
                 f_cmake.write('\n# {}\n'.format(line[2:-1]))
-                continue
-            if menu_start and in_component_options:
                 f_header.write('\n/* {} */\n'.format(line[2:-1]))
                 continue
 
@@ -197,11 +196,17 @@ def generate_file(dot_config):
                 header_val = '0'
 
             # Write the result into cmake and header files.
-            if name and not in_component_options:
-                f_cmake.write('set({:<45} {:<15} CACHE {:<6} "" FORCE)\n'.
-                              format(name, cmake_val, cmake_type))
-            if name and in_component_options:
-                f_header.write('#define {:<45} {}\n'.format(name, header_val))
+            if name:
+                if cmake_val == 'OFF':
+                    f_cmake.write('unset({:<45} {:<15} CACHE {:<15})\n'.
+                              format(prefix + name, '', ''))
+                elif cmake_val == 'ON':
+                    f_cmake.write('set(  {:<45} {:<15} CACHE {:<6} "" FORCE)\n'.
+                              format(prefix + name, '', cmake_type))
+                else:
+                    f_cmake.write('set(  {:<45} {:<15} CACHE {:<6} "" FORCE)\n'.
+                              format(prefix + name, cmake_val, cmake_type))
+                f_header.write('#define {:<45} {}\n'.format(prefix + name, header_val))
 
     logging.info('cModule build configs saved to \'{}\''.format(cmake_file))
     logging.info('cModule component configs saved to \'{}\''.format(header_file))
